@@ -27,7 +27,7 @@ import gettext
 bot = telebot.TeleBot(config.BotAPIKey)
 # /API Token
 
-lang_translations = gettext.translation('base', localedir=os.path.join(config.tontgpath, "locales"), languages=['en'])
+lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
 lang_translations.install()
 _ = lang_translations.gettext
 
@@ -256,7 +256,7 @@ types.InlineKeyboardButton(text=_("30d"), callback_data="diskiohist_30d"))
 def historyget(f,t,lbl,ptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=t)
     x = df.iloc[:,0].loc[period]
@@ -283,7 +283,7 @@ def historyget(f,t,lbl,ptitle,poutf,rm):
 def historygettd(f,t,lbl,ptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=t)) & (df.iloc[:,1] < 0)
     x = df.iloc[:,0].loc[period]
@@ -308,7 +308,7 @@ def historygettd(f,t,lbl,ptitle,poutf,rm):
 def historygetping(f,t,lbl,ptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=t)
     x = df.iloc[:,0].loc[period]
@@ -333,7 +333,7 @@ def historygetping(f,t,lbl,ptitle,poutf,rm):
 def historygetnb(f,t,lbl,dptitle,uptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
     df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -368,7 +368,7 @@ def historygetnb(f,t,lbl,dptitle,uptitle,poutf,rm):
 def historygetdio(f,t,lbl,rptitle,wptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     df.iloc[:,1] = df.iloc[:,1]/1024/1024
     df.iloc[:,2] = df.iloc[:,2]/1024/1024
@@ -403,7 +403,7 @@ def historygetdio(f,t,lbl,rptitle,wptitle,poutf,rm):
 def historygetslowlog(f,t,lbl,ptitle,poutf,rm):
   try:
     bot.send_chat_action(config.tg, "upload_photo")
-    df = pd.read_csv(os.path.join(config.tontgpath, f), sep=";", encoding="utf-8", header=None)
+    df = pd.read_csv(os.path.join(config.serverbotpath, f), sep=";", encoding="utf-8", header=None)
     df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
     period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=t)
     x = df.iloc[:,0].loc[period]
@@ -487,7 +487,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=cpuhistmore)
     if call.data == "cpuhist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=30)
         x = df.iloc[:,0].loc[period]
@@ -510,7 +510,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=1)
         x = df.iloc[:,0].loc[period]
@@ -533,7 +533,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=3)
         x = df.iloc[:,0].loc[period]
@@ -556,7 +556,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=6)
         x = df.iloc[:,0].loc[period]
@@ -579,7 +579,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=12)
         x = df.iloc[:,0].loc[period]
@@ -602,7 +602,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=24)
         x = df.iloc[:,0].loc[period]
@@ -625,7 +625,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=72)
         x = df.iloc[:,0].loc[period]
@@ -648,7 +648,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=120)
         x = df.iloc[:,0].loc[period]
@@ -671,7 +671,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=168)
         x = df.iloc[:,0].loc[period]
@@ -694,7 +694,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=336)
         x = df.iloc[:,0].loc[period]
@@ -717,7 +717,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=504)
         x = df.iloc[:,0].loc[period]
@@ -740,7 +740,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("CPU Utilization history load error"))
     if call.data == "cpuhist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=720)
         x = df.iloc[:,0].loc[period]
@@ -771,7 +771,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=ramhistmore)
     if call.data == "ramhist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=30)
         x = df.iloc[:,0].loc[period]
@@ -794,7 +794,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=1)
         x = df.iloc[:,0].loc[period]
@@ -817,7 +817,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=3)
         x = df.iloc[:,0].loc[period]
@@ -840,7 +840,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=6)
         x = df.iloc[:,0].loc[period]
@@ -863,7 +863,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=12)
         x = df.iloc[:,0].loc[period]
@@ -886,7 +886,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=24)
         x = df.iloc[:,0].loc[period]
@@ -909,7 +909,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=72)
         x = df.iloc[:,0].loc[period]
@@ -932,7 +932,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=120)
         x = df.iloc[:,0].loc[period]
@@ -955,7 +955,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=168)
         x = df.iloc[:,0].loc[period]
@@ -978,7 +978,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=336)
         x = df.iloc[:,0].loc[period]
@@ -1001,7 +1001,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=504)
         x = df.iloc[:,0].loc[period]
@@ -1024,7 +1024,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("RAM Load history load error"))
     if call.data == "ramhist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=720)
         x = df.iloc[:,0].loc[period]
@@ -1055,7 +1055,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=timediffhistmore)
     if call.data == "timediffhist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=30)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1076,7 +1076,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=1)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1097,7 +1097,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=3)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1118,7 +1118,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=6)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1139,7 +1139,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=12)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1160,7 +1160,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=24)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1181,7 +1181,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=72)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1202,7 +1202,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=120)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1223,7 +1223,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=168)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1244,7 +1244,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=336)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1265,7 +1265,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=504)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1286,7 +1286,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Time Diff history load error"))
     if call.data == "timediffhist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = (df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=720)) & (df.iloc[:,1] < 0)
         x = df.iloc[:,0].loc[period]
@@ -1315,7 +1315,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=pinghistmore)
     if call.data == "pinghist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=30)
         x = df.iloc[:,0].loc[period]
@@ -1336,7 +1336,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=1)
         x = df.iloc[:,0].loc[period]
@@ -1357,7 +1357,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=3)
         x = df.iloc[:,0].loc[period]
@@ -1378,7 +1378,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=6)
         x = df.iloc[:,0].loc[period]
@@ -1399,7 +1399,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=12)
         x = df.iloc[:,0].loc[period]
@@ -1420,7 +1420,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=24)
         x = df.iloc[:,0].loc[period]
@@ -1441,7 +1441,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=72)
         x = df.iloc[:,0].loc[period]
@@ -1462,7 +1462,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=120)
         x = df.iloc[:,0].loc[period]
@@ -1483,7 +1483,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=168)
         x = df.iloc[:,0].loc[period]
@@ -1504,7 +1504,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=336)
         x = df.iloc[:,0].loc[period]
@@ -1525,7 +1525,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=504)
         x = df.iloc[:,0].loc[period]
@@ -1546,7 +1546,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Ping check history load error"))
     if call.data == "pinghist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=720)
         x = df.iloc[:,0].loc[period]
@@ -1575,7 +1575,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=networkhistmore)
     if call.data == "networkhist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1606,7 +1606,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1637,7 +1637,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1668,7 +1668,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1699,7 +1699,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1730,7 +1730,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1761,7 +1761,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1792,7 +1792,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1823,7 +1823,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1854,7 +1854,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1885,7 +1885,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1916,7 +1916,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Network Utilization history load error"))
     if call.data == "networkhist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -1954,7 +1954,7 @@ def inlinekeyboards(call):
       bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=diskiohistmore)
     if call.data == "diskiohist_30m":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024
         df.iloc[:,2] = df.iloc[:,2]/1024/1024
@@ -1985,7 +1985,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_1h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2016,7 +2016,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_3h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2047,7 +2047,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_6h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2078,7 +2078,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_12h":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2109,7 +2109,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_1d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2140,7 +2140,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_3d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2171,7 +2171,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_5d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2202,7 +2202,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_7d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2233,7 +2233,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_14d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2264,7 +2264,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_21d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2295,7 +2295,7 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_30d":
       try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
+        df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
         df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
         df.iloc[:,1] = df.iloc[:,1]/1024/1024*8
         df.iloc[:,2] = df.iloc[:,2]/1024/1024*8
@@ -2466,7 +2466,7 @@ def command_testspeed_france(message):
   if message.from_user.id == config.tg:
     try:
       bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 24386 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 24386 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
@@ -2483,7 +2483,7 @@ def command_testspeed_germany(message):
   if message.from_user.id == config.tg:
     try:
       bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 28622 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 28622 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
@@ -2500,7 +2500,7 @@ def command_testspeed_netherlands(message):
   if message.from_user.id == config.tg:
     try:
       bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 20005 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 20005 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
@@ -2517,7 +2517,7 @@ def command_testspeed_uk(message):
   if message.from_user.id == config.tg:
     try:
       bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 11123 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 11123 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
@@ -2568,7 +2568,7 @@ def AlertsNotificationsRam():
         memload = "free -m | grep Mem | awk '/Mem/{used=$3} /Mem/{total=$2} END {printf (used*100)/total}'"
         memload = str(subprocess.check_output(memload, shell = True, encoding='utf-8'))
         # History data
-        with open(os.path.join(config.tontgpathdb, "ramload.dat"), "a") as i:
+        with open(os.path.join(config.serverbotpathdb, "ramload.dat"), "a") as i:
           i.write(str(int(time.time())) + ";" + memload + "\n")
         # Notification
         if int(float(memload)) >= config.memloadalarm:
@@ -2600,7 +2600,7 @@ def AlertsNotificationsCPU():
       try:
         td = 0
         cpuutilalert = str(psutil.cpu_percent())
-        with open(os.path.join(config.tontgpathdb, "cpuload.dat"), "a") as i:
+        with open(os.path.join(config.serverbotpathdb, "cpuload.dat"), "a") as i:
           i.write(str(int(time.time())) + ";" + cpuutilalert + "\n")
         if int(float(cpuutilalert)) >= config.cpuutilalarm:
           if alrtprdcpu in config.repeattimealarmsrv:
@@ -2632,7 +2632,7 @@ def AlertsNotificationsping():
         td = 0
         pingc = "ping -c 1 " + config.srvping + " | tail -1 | awk '{printf $4}' | cut -d '/' -f 1 | tr -d $'\n'"
         pingc = str(subprocess.check_output(pingc, shell = True, encoding='utf-8'))
-        with open(os.path.join(config.tontgpathdb, "pingcheck.dat"), "a") as i:
+        with open(os.path.join(config.serverbotpathdb, "pingcheck.dat"), "a") as i:
           i.write(str(int(time.time())) + ";" + pingc + "\n")
         if int(float(pingc)) >= config.pingcalarm:
           if alrtprdpng in config.repeattimealarmsrv:
@@ -2670,7 +2670,7 @@ def monitoringnetwork():
         bytes_recv1 = getattr(currentloadn1, 'bytes_recv') 
         sentspd = (bytes_sent1-bytes_sent)
         recvspd = (bytes_recv1-bytes_recv)
-        with open(os.path.join(config.tontgpathdb, "networkload.dat"), "a") as i:
+        with open(os.path.join(config.serverbotpathdb, "networkload.dat"), "a") as i:
           i.write(str(int(time.time())) + ";" + str(int(sentspd)) + ";" + str(int(recvspd)) + "\n") 
       except:
         pass      
@@ -2696,7 +2696,7 @@ def monitoringdiskio():
         writio = (bytes_writ1-bytes_writ)
         readio = str((round(readio, 2)))
         writio = str((round(writio, 2)))
-        with open(os.path.join(config.tontgpathdb, "diskioload.dat"), "a") as i:
+        with open(os.path.join(config.serverbotpathdb, "diskioload.dat"), "a") as i:
           i.write(str(int(time.time())) + ";" + str(int(readio)) + ";" + str(int(writio)) + "\n") 
       except:
         pass
