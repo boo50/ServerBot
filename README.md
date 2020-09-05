@@ -42,7 +42,7 @@ Tested on ubuntu 18.04 & python 3.6.9
 ```sh
 $ cd $HOME && git clone -v https://github.com/boo50/ServerBot.git serverbot && cd ./serverbot && chmod +x ./installsbot.sh
 ```
- 4. Open ./config.py in any editor and insert you telegram id. Then edit ./sbot.sh and put user name. Open ./tontgbot.service and put user&group.
+ 4. Open ./config.py in any editor and insert you telegram id. Then edit ./sbot.sh and put user name. Open ./serverbot.service and put user&group.
  5. Run 
  ```sh
 $ /bin/bash ./installsbot.sh
