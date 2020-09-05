@@ -11,6 +11,8 @@ pip3 install --upgrade matplotlib
 pip3 install --upgrade numpy
 pip3 install --upgrade pandas
 
+echo "Prepare configs"
+sed -i "s/<user>/"$USER"/g" serverbot.service sbot.sh config.py
 echo "Copy files"
 sudo cp -pv ./sbot.sh /etc/init.d/serverbot
 chmod -v +x /etc/init.d/serverbot
