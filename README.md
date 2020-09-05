@@ -40,12 +40,12 @@ Tested on ubuntu 18.04 & python 3.6.9
  2. Send to your new bot command /start and go to the next step.
  3. Run command below
 ```sh
-$ cd $HOME && git clone -v https://github.com/boo50/ServerBot.git serverbot && cd ./serverbot && chmod +x ./installsbot.sh
+cd $HOME && git clone -v https://github.com/boo50/ServerBot.git serverbot && cd ./serverbot && chmod +x ./installsbot.sh
 ```
  4. Open ./config.py in any editor and insert you telegram id. Then edit ./sbot.sh and put user name. Open ./serverbot.service and put user&group.
  5. Run 
- ```sh
-$ /bin/bash ./installsbot.sh
+```sh
+./installsbot.sh
 ```
 
 ### What to do if something not working?
