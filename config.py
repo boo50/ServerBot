@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Config
-BotAPIKey = '1334421494:AAHn0nc4YlzWGIQXXmF9YZT_GeS8my7r14I' # API Keythat you get from @BotFather
-tg = 270356389 # Your id, you can get it by sending command /id to bot @TONTgIDBot
-serverbotpath = '/home/lux/serverbot' # User folder with this bot.
-serverbotpathdb = '/home/lux/serverbot/db' # User folder with bot database. 
+BotAPIKey = 'xxx' # API Keythat you get from @BotFather
+tg = xxx # Your id, you can get it by sending command /id to bot @TONTgIDBot
+serverbotpath = '/home/<user>/serverbot' # User folder with this bot.
+serverbotpathdb = '/home/<user>/serverbot/db' # User folder with bot database. 
 srvping = '1.1.1.1' # Ping test server
 traceroutetest = '1.1.1.1' # Traceroute test server
 

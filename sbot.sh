@@ -11,8 +11,8 @@
 ### END INIT INFO
 
 NAME=tgserverbot
-PIDFILE=/home/lux/serverbot/serverbot.pid
-DAEMON=/home/lux/serverbot/bot.py
+PIDFILE=/home/<user>/serverbot/serverbot.pid
+DAEMON=/home/<user>/serverbot/bot.py
 
 case "$1" in
   start)
