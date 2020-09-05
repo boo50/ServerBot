@@ -27,9 +27,9 @@ import gettext
 bot = telebot.TeleBot(config.BotAPIKey)
 # /API Token
 
-lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
-lang_translations.install()
-_ = lang_translations.gettext
+#lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
+#lang_translations.install()
+#_= lang_translations.gettext
 
 # Log
 logger = telebot.logger
@@ -68,13 +68,12 @@ lt_starttime = "\U0001F7E2 " + lt_starttime
 lt_mainmenu = _("Main menu")
 lt_mainmenu =  "\U0001F3E1 " + lt_mainmenu
 #----
-lt_denmarkspdt =  "\U0001F1E9\U0001F1F0 " + lt_denmarkspdt
 lt_francefspdt =  _("France")
 lt_francefspdt =  "\U0001F1EB\U0001F1F7 " + lt_francefspdt
 lt_germanyspdt =  _("Germany")
+lt_germanyspdt =  "\U0001F1E9\U0001F1EA " + lt_germanyspdt
 lt_nthlndsspdt =  _("Netherlands")
 lt_nthlndsspdt =  "\U0001F1F3\U0001F1F1 " + lt_nthlndsspdt
-lt_swtzlndspdt =  "\U0001F1E8\U0001F1ED " + lt_swtzlndspdt
 lt_unitedkspdt =  _("United Kingdom")
 lt_unitedkspdt =  "\U0001F1EC\U0001F1E7 " + lt_unitedkspdt
 lt_backlinux =  _("Back to Linux tools")
