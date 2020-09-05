@@ -1,27 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-# ##### Config
+# Config
 BotAPIKey = 'x:y' # API Keythat you get from @BotFather
-#tg = 1111 # Your id, you can get it by sending command /id to bot @TONTgIDBot
-#ud = '/opt/net.ton.dev/ton/build/utils' # UTILS_DIR | You can easy get it from $ env command. Be sure, before this command you run env.sh !!!!!-->>> Don't forget to specify contest network tonos-cli config --url https://gameX.ton.dev https://docs.ton.dev/86757ecb2/p/9229d3-run-contest-validator 
-#tk = '/home/user/ton-keys/' # KEYS_DIR | You can easy get it from $ env command. Be sure, before this command you run env.sh
-#tf = '/opt/net.ton.dev/' # NET_TON_DEV_SRC_TOP_DIR | You can easy get it from $ env command. Be sure, before this command you run env.sh
-#vu = 'https://net.ton.live/validators?section=details&public_key=' # Change 'net' to your game.
-#tontgpath = '/home/user/tontgbot' # User folder with this bot.
-#tontgpathdb = '/home/user/tontgbot/db' # User folder with bot database. 
-# Edit ends here
-#tw = '/var/ton-work' # TON work dir
-
-
-# Other
-#elogc = '250' # Row count for the error log
-#slogc = '250' # Row count for the slow log
-
+tg = 1111 # Your id, you can get it by sending command /id to bot @TONTgIDBot
+serverbotpath = '/home/$USER/serverbot' # User folder with this bot.
+serverbotpathdb = '/home/$USER/serverbot/db' # User folder with bot database. 
 srvping = '1.1.1.1' # Ping test server
 traceroutetest = '1.1.1.1' # Traceroute test server
-
-#nodelogressave = 1 # Save node.log before restart with TONTgBot
 
 # Alarms
 memloadalarm = 95 # RAM Utilization alarm starts at
