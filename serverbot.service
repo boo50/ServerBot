@@ -4,8 +4,8 @@ After=syslog.target
 
 [Service]
 Type=simple
-User=<your user>
-Group=<your group>
+User=lux
+Group=lux
 ExecStart=/etc/init.d/serverbot start
 ExecStop=/etc/init.d/serverbot stop
 
