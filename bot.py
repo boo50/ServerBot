@@ -20,16 +20,15 @@ from dotenv import load_dotenv
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import gettext 
-
+import gettext
 
 # API Token
 bot = telebot.TeleBot(config.BotAPIKey)
 # /API Token
 
-lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
-lang_translations.install()
-_= lang_translations.gettext
+#lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
+#lang_translations.install()
+#_= lang_translations.gettext
 
 # Log
 logger = telebot.logger
@@ -40,43 +39,43 @@ telebot.logger.setLevel(logging.ERROR) # Outputs Error messages to console.
 #hostn = (hostn[0:hostn.find('.')])
 
 # Menu vars
-lt_cpu = _("CPU")
+lt_cpu = ("CPU")
 lt_cpu = "\U0001F39B " + lt_cpu
-lt_ram = _("RAM")
+lt_ram = ("RAM")
 lt_ram = "\U0001F39A " + lt_ram
-lt_disks = _("Disk usage")
+lt_disks = ("Disk usage")
 lt_disks = "\U0001F4BE " + lt_disks
-lt_linuxtools = _("Linux tools")
+lt_linuxtools = ("Linux tools")
 lt_linuxtools = "\U0001F9F0 " + lt_linuxtools
 #----
-lt_ping = _("Ping test")
+lt_ping = ("Ping test")
 lt_ping =  "\U0001F3D3 " + lt_ping
-lt_traceroute = _("Traceroute test")
+lt_traceroute = ("Traceroute test")
 lt_traceroute =  "\U0001F9ED " + lt_traceroute
-lt_topproc = _("Top processes")
+lt_topproc = ("Top processes")
 lt_topproc =  "\U0001F51D " + lt_topproc
-lt_ssvalid = _("Port check")
+lt_ssvalid = ("Port check")
 lt_ssvalid =  "\U0001F442\U0001F3FC " + lt_ssvalid
-lt_spdtst = _("Network speed test")
+lt_spdtst = ("Network speed test")
 lt_spdtst =  "\U0001F4E1 " + lt_spdtst
-lt_currntwrkload = _("Current network load")
+lt_currntwrkload = ("Current network load")
 lt_currntwrkload =  "\U0001F51B " + lt_currntwrkload
-lt_currntdiskload = _("Current disk i/o")
+lt_currntdiskload = ("Current disk i/o")
 lt_currntdiskload = "\U0001F4BD " + lt_currntdiskload
-lt_starttime = _("Uptime")
+lt_starttime = ("Uptime")
 lt_starttime = "\U0001F7E2 " + lt_starttime
-lt_mainmenu = _("Main menu")
+lt_mainmenu = ("Main menu")
 lt_mainmenu =  "\U0001F3E1 " + lt_mainmenu
 #----
-lt_francefspdt =  _("France")
+lt_francefspdt =  ("France")
 lt_francefspdt =  "\U0001F1EB\U0001F1F7 " + lt_francefspdt
-lt_germanyspdt =  _("Germany")
+lt_germanyspdt =  ("Germany")
 lt_germanyspdt =  "\U0001F1E9\U0001F1EA " + lt_germanyspdt
-lt_nthlndsspdt =  _("Netherlands")
+lt_nthlndsspdt =  ("Netherlands")
 lt_nthlndsspdt =  "\U0001F1F3\U0001F1F1 " + lt_nthlndsspdt
-lt_unitedkspdt =  _("United Kingdom")
+lt_unitedkspdt =  ("United Kingdom")
 lt_unitedkspdt =  "\U0001F1EC\U0001F1E7 " + lt_unitedkspdt
-lt_backlinux =  _("Back to Linux tools")
+lt_backlinux =  ("Back to Linux tools")
 lt_backlinux = "\U0001F519 " + lt_backlinux
 # /Menu vars
 
@@ -131,7 +130,7 @@ def get_id(i):
 @bot.message_handler(commands=["start", "help"])
 def send_welcome(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, _("Hello") + "\U0001F44B\n" + _("I'm here to help you with your server ") + " \U0001F9BE\n" + _("Let's choose what you want?"),reply_markup=markup)
+    bot.send_message(config.tg, ("Hello") + "\U0001F44B\n" + ("I'm here to help you with your server ") + " \U0001F9BE\n" + ("Let's choose what you want?"),reply_markup=markup)
   else:
     pass
 # /Start
@@ -140,111 +139,111 @@ def send_welcome(message):
 #CPU
 cpuloadhist = types.InlineKeyboardMarkup()
 cpuloadhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="cpuhist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="cpuhist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="cpuhist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="cpuhist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="cpuhist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="cpuhist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="cpuhistmore"))
+types.InlineKeyboardButton(text=("30m"), callback_data="cpuhist_30m"),
+types.InlineKeyboardButton(text=("1h"), callback_data="cpuhist_1h"),
+types.InlineKeyboardButton(text=("3h"), callback_data="cpuhist_3h"),
+types.InlineKeyboardButton(text=("6h"), callback_data="cpuhist_6h"),
+types.InlineKeyboardButton(text=("12h"), callback_data="cpuhist_12h"),
+types.InlineKeyboardButton(text=("1d"), callback_data="cpuhist_1d"),
+types.InlineKeyboardButton(text=("+"), callback_data="cpuhistmore"))
 
 cpuhistmore = types.InlineKeyboardMarkup()
 cpuhistmore.row(
 types.InlineKeyboardButton(text="\U00002190", callback_data="cpuloadhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="cpuhist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="cpuhist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="cpuhist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="cpuhist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="cpuhist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="cpuhist_30d"))
+types.InlineKeyboardButton(text=("3d"), callback_data="cpuhist_3d"),
+types.InlineKeyboardButton(text=("5d"), callback_data="cpuhist_5d"),
+types.InlineKeyboardButton(text=("7d"), callback_data="cpuhist_7d"),
+types.InlineKeyboardButton(text=("14d"), callback_data="cpuhist_14d"),
+types.InlineKeyboardButton(text=("21d"), callback_data="cpuhist_21d"),
+types.InlineKeyboardButton(text=("30d"), callback_data="cpuhist_30d"))
 #CPU
 
 #RAM
 ramloadhist = types.InlineKeyboardMarkup()
 ramloadhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="ramhist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="ramhist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="ramhist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="ramhist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="ramhist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="ramhist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="ramhistmore"))
+types.InlineKeyboardButton(text=("30m"), callback_data="ramhist_30m"),
+types.InlineKeyboardButton(text=("1h"), callback_data="ramhist_1h"),
+types.InlineKeyboardButton(text=("3h"), callback_data="ramhist_3h"),
+types.InlineKeyboardButton(text=("6h"), callback_data="ramhist_6h"),
+types.InlineKeyboardButton(text=("12h"), callback_data="ramhist_12h"),
+types.InlineKeyboardButton(text=("1d"), callback_data="ramhist_1d"),
+types.InlineKeyboardButton(text=("+"), callback_data="ramhistmore"))
 
 ramhistmore = types.InlineKeyboardMarkup()
 ramhistmore.row(
-types.InlineKeyboardButton(text=_("\U00002190"), callback_data="ramloadhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="ramhist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="ramhist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="ramhist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="ramhist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="ramhist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="ramhist_30d"))
+types.InlineKeyboardButton(text=("\U00002190"), callback_data="ramloadhist"),
+types.InlineKeyboardButton(text=("3d"), callback_data="ramhist_3d"),
+types.InlineKeyboardButton(text=("5d"), callback_data="ramhist_5d"),
+types.InlineKeyboardButton(text=("7d"), callback_data="ramhist_7d"),
+types.InlineKeyboardButton(text=("14d"), callback_data="ramhist_14d"),
+types.InlineKeyboardButton(text=("21d"), callback_data="ramhist_21d"),
+types.InlineKeyboardButton(text=("30d"), callback_data="ramhist_30d"))
 #RAM
 
 #PING
 pingcheckhist = types.InlineKeyboardMarkup()
 pingcheckhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="pinghist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="pinghist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="pinghist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="pinghist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="pinghist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="pinghist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="pinghistmore"))
+types.InlineKeyboardButton(text=("30m"), callback_data="pinghist_30m"),
+types.InlineKeyboardButton(text=("1h"), callback_data="pinghist_1h"),
+types.InlineKeyboardButton(text=("3h"), callback_data="pinghist_3h"),
+types.InlineKeyboardButton(text=("6h"), callback_data="pinghist_6h"),
+types.InlineKeyboardButton(text=("12h"), callback_data="pinghist_12h"),
+types.InlineKeyboardButton(text=("1d"), callback_data="pinghist_1d"),
+types.InlineKeyboardButton(text=("+"), callback_data="pinghistmore"))
 
 pinghistmore = types.InlineKeyboardMarkup()
 pinghistmore.row(
-types.InlineKeyboardButton(text=_("\U00002190"), callback_data="pingcheckhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="pinghist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="pinghist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="pinghist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="pinghist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="pinghist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="pinghist_30d"))
+types.InlineKeyboardButton(text=("\U00002190"), callback_data="pingcheckhist"),
+types.InlineKeyboardButton(text=("3d"), callback_data="pinghist_3d"),
+types.InlineKeyboardButton(text=("5d"), callback_data="pinghist_5d"),
+types.InlineKeyboardButton(text=("7d"), callback_data="pinghist_7d"),
+types.InlineKeyboardButton(text=("14d"), callback_data="pinghist_14d"),
+types.InlineKeyboardButton(text=("21d"), callback_data="pinghist_21d"),
+types.InlineKeyboardButton(text=("30d"), callback_data="pinghist_30d"))
 #PING
 
 # Network
 networkcheckhist = types.InlineKeyboardMarkup()
 networkcheckhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="networkhist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="networkhist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="networkhist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="networkhist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="networkhist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="networkhist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="networkhistmore"))
+types.InlineKeyboardButton(text=("30m"), callback_data="networkhist_30m"),
+types.InlineKeyboardButton(text=("1h"), callback_data="networkhist_1h"),
+types.InlineKeyboardButton(text=("3h"), callback_data="networkhist_3h"),
+types.InlineKeyboardButton(text=("6h"), callback_data="networkhist_6h"),
+types.InlineKeyboardButton(text=("12h"), callback_data="networkhist_12h"),
+types.InlineKeyboardButton(text=("1d"), callback_data="networkhist_1d"),
+types.InlineKeyboardButton(text=("+"), callback_data="networkhistmore"))
 
 networkhistmore = types.InlineKeyboardMarkup()
 networkhistmore.row(
-types.InlineKeyboardButton(text=_("\U00002190"), callback_data="networkcheckhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="networkhist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="networkhist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="networkhist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="networkhist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="networkhist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="networkhist_30d"))
+types.InlineKeyboardButton(text=("\U00002190"), callback_data="networkcheckhist"),
+types.InlineKeyboardButton(text=("3d"), callback_data="networkhist_3d"),
+types.InlineKeyboardButton(text=("5d"), callback_data="networkhist_5d"),
+types.InlineKeyboardButton(text=("7d"), callback_data="networkhist_7d"),
+types.InlineKeyboardButton(text=("14d"), callback_data="networkhist_14d"),
+types.InlineKeyboardButton(text=("21d"), callback_data="networkhist_21d"),
+types.InlineKeyboardButton(text=("30d"), callback_data="networkhist_30d"))
 # Network
 
 # Disk io
 diskiocheckhist = types.InlineKeyboardMarkup()
 diskiocheckhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="diskiohist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="diskiohist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="diskiohist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="diskiohist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="diskiohist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="diskiohist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="diskiohistmore"))
+types.InlineKeyboardButton(text=("30m"), callback_data="diskiohist_30m"),
+types.InlineKeyboardButton(text=("1h"), callback_data="diskiohist_1h"),
+types.InlineKeyboardButton(text=("3h"), callback_data="diskiohist_3h"),
+types.InlineKeyboardButton(text=("6h"), callback_data="diskiohist_6h"),
+types.InlineKeyboardButton(text=("12h"), callback_data="diskiohist_12h"),
+types.InlineKeyboardButton(text=("1d"), callback_data="diskiohist_1d"),
+types.InlineKeyboardButton(text=("+"), callback_data="diskiohistmore"))
 
 diskiohistmore = types.InlineKeyboardMarkup()
 diskiohistmore.row(
-types.InlineKeyboardButton(text=_("\U00002190"), callback_data="diskiocheckhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="diskiohist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="diskiohist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="diskiohist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="diskiohist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="diskiohist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="diskiohist_30d"))
+types.InlineKeyboardButton(text=("\U00002190"), callback_data="diskiocheckhist"),
+types.InlineKeyboardButton(text=("3d"), callback_data="diskiohist_3d"),
+types.InlineKeyboardButton(text=("5d"), callback_data="diskiohist_5d"),
+types.InlineKeyboardButton(text=("7d"), callback_data="diskiohist_7d"),
+types.InlineKeyboardButton(text=("14d"), callback_data="diskiohist_14d"),
+types.InlineKeyboardButton(text=("21d"), callback_data="diskiohist_21d"),
+types.InlineKeyboardButton(text=("30d"), callback_data="diskiohist_30d"))
 # Disk io
 
 # InlineKeyboards
@@ -275,7 +274,7 @@ def historyget(f,t,lbl,ptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("History load error"))
+    bot.send_message(config.tg, text = ("History load error"))
 # History load welcome
 
 # History load welcome Time Diff
@@ -300,7 +299,7 @@ def historygettd(f,t,lbl,ptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("History load error"))
+    bot.send_message(config.tg, text = ("History load error"))
 # History load welcome Time Diff 
 
 # History load welcome Ping
@@ -325,7 +324,7 @@ def historygetping(f,t,lbl,ptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("Ping History load error"))
+    bot.send_message(config.tg, text = ("Ping History load error"))
 # History load welcome Ping
 
 # History load welcome Network Bandwidth
@@ -360,7 +359,7 @@ def historygetnb(f,t,lbl,dptitle,uptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("Ping History load error"))
+    bot.send_message(config.tg, text = ("Ping History load error"))
 # History load welcome Network Bandwidth
 
 # History load welcome Disk I/O
@@ -395,7 +394,7 @@ def historygetdio(f,t,lbl,rptitle,wptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+    bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
 # History load welcome Disk I/O
 
 # History load welcome
@@ -420,7 +419,7 @@ def historygetslowlog(f,t,lbl,ptitle,poutf,rm):
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
-    bot.send_message(config.tg, text = _("History load error"))
+    bot.send_message(config.tg, text = ("History load error"))
 #/History load welcome
 
 # CPU
@@ -430,11 +429,11 @@ def command_cpu(message):
     try:
       sysload = str(psutil.getloadavg())
       cpuutil = str(psutil.cpu_percent(percpu=True))
-      cpu = _("*System load (1,5,15 min):* _") + sysload + _("_\n*CPU utilization %:* _") + cpuutil + "_"
+      cpu = ("*System load (1,5,15 min):* _") + sysload + ("_\n*CPU utilization %:* _") + cpuutil + "_"
       bot.send_message(config.tg, text=cpu, parse_mode="Markdown")
-      historyget("db/cpuload.dat",30,_("Utilization"),_("CPU Utilization"),"/tmp/cpuload.png",cpuloadhist)
+      historyget("db/cpuload.dat",30,("Utilization"),("CPU Utilization"),"/tmp/cpuload.png",cpuloadhist)
     except:
-      bot.send_message(config.tg, text=_("Can't get CPU info"))
+      bot.send_message(config.tg, text=("Can't get CPU info"))
   else:
     pass
 # /CPU
@@ -444,12 +443,12 @@ def command_cpu(message):
 def command_ram(message):
   if message.from_user.id == config.tg:
     try:
-      ram = _("*RAM, Gb.*\n_Total: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $2}'"], shell = True,encoding='utf-8')) + _("Available: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $7}'"], shell = True,encoding='utf-8')) + _("Used: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $3}'"], shell = True,encoding='utf-8')) + "_"
-      swap = _("*SWAP, Gb.*\n_Total: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $2}'"], shell = True,encoding='utf-8')) + _("Available: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $7}'"], shell = True,encoding='utf-8')) + _("Used: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $3}'"], shell = True,encoding='utf-8')) + "_"
+      ram = ("*RAM, Gb.*\n_Total: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $2}'"], shell = True,encoding='utf-8')) + ("Available: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $7}'"], shell = True,encoding='utf-8')) + ("Used: ") + str(subprocess.check_output(["free -mh | grep Mem | awk '{print $3}'"], shell = True,encoding='utf-8')) + "_"
+      swap = ("*SWAP, Gb.*\n_Total: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $2}'"], shell = True,encoding='utf-8')) + ("Available: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $7}'"], shell = True,encoding='utf-8')) + ("Used: ") + str(subprocess.check_output(["free -mh | grep Swap | awk '{print $3}'"], shell = True,encoding='utf-8')) + "_"
       bot.send_message(config.tg, text=ram + swap, parse_mode="Markdown")
-      historyget("db/ramload.dat",30,_("Utilization"),_("RAM Utilization"),"/tmp/ramload.png",ramloadhist)
+      historyget("db/ramload.dat",30,("Utilization"),("RAM Utilization"),"/tmp/ramload.png",ramloadhist)
     except:
-      bot.send_message(config.tg, text=_("Can't get RAM info"), parse_mode="Markdown")
+      bot.send_message(config.tg, text=("Can't get RAM info"), parse_mode="Markdown")
   else:
     pass
 # /RAM
@@ -463,12 +462,12 @@ def command_disk(message):
       dbsize = str(subprocess.check_output(["du -msh " + config.tw + "/db/files/ | awk '{print $1}'"], shell = True,encoding='utf-8'))
       archsize = str(subprocess.check_output(["du -msh " + config.tw + "/db/archive/ | awk '{print $1}'"], shell = True,encoding='utf-8'))
       nodelog = str(subprocess.check_output(["du -msh " + config.tw + "/node.log | awk '{print $1}'"], shell = True,encoding='utf-8'))
-      dbsize = _("*Database size:* _") + dbsize + "_"
-      archsize = _("*Archive size:* _") + archsize + "_" 
-      nodelog = _("*Node.log size:* _") + nodelog + "_"
+      dbsize = ("*Database size:* _") + dbsize + "_"
+      archsize = ("*Archive size:* _") + archsize + "_" 
+      nodelog = ("*Node.log size:* _") + nodelog + "_"
       bot.send_message(config.tg, text=archsize + dbsize + nodelog + disk, parse_mode="Markdown", reply_markup=markup)
     except:
-      bot.send_message(config.tg, text=_("Can't get disk info"), parse_mode="Markdown", reply_markup=markup)
+      bot.send_message(config.tg, text=("Can't get disk info"), parse_mode="Markdown", reply_markup=markup)
   else:
     pass
 # /Disk
@@ -506,7 +505,7 @@ def inlinekeyboards(call):
         cpuload_1h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -529,7 +528,7 @@ def inlinekeyboards(call):
         cpuload_1h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -552,7 +551,7 @@ def inlinekeyboards(call):
         cpuload_3h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -575,7 +574,7 @@ def inlinekeyboards(call):
         cpuload_6h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -598,7 +597,7 @@ def inlinekeyboards(call):
         cpuload_12h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -621,7 +620,7 @@ def inlinekeyboards(call):
         cpuload_1d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -644,7 +643,7 @@ def inlinekeyboards(call):
         cpuload_3d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -667,7 +666,7 @@ def inlinekeyboards(call):
         cpuload_5d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -690,7 +689,7 @@ def inlinekeyboards(call):
         cpuload_7d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -713,7 +712,7 @@ def inlinekeyboards(call):
         cpuload_14d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -736,7 +735,7 @@ def inlinekeyboards(call):
         cpuload_21d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
     if call.data == "cpuhist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "cpuload.dat"), sep=";", encoding="utf-8", header=None)
@@ -760,7 +759,7 @@ def inlinekeyboards(call):
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
         bot.send
       except:
-        bot.send_message(config.tg, text = _("CPU Utilization history load error"))
+        bot.send_message(config.tg, text = ("CPU Utilization history load error"))
   # CPU graph
 
   # RAM graph
@@ -790,7 +789,7 @@ def inlinekeyboards(call):
         ramload_30m = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -813,7 +812,7 @@ def inlinekeyboards(call):
         ramload_1h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -836,7 +835,7 @@ def inlinekeyboards(call):
         ramload_3h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -859,7 +858,7 @@ def inlinekeyboards(call):
         ramload_6h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -882,7 +881,7 @@ def inlinekeyboards(call):
         ramload_12h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -905,7 +904,7 @@ def inlinekeyboards(call):
         ramload_1d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -928,7 +927,7 @@ def inlinekeyboards(call):
         ramload_3d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -951,7 +950,7 @@ def inlinekeyboards(call):
         ramload_5d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -974,7 +973,7 @@ def inlinekeyboards(call):
         ramload_7d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -997,7 +996,7 @@ def inlinekeyboards(call):
         ramload_14d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1020,7 +1019,7 @@ def inlinekeyboards(call):
         ramload_21d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
     if call.data == "ramhist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "ramload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1044,7 +1043,7 @@ def inlinekeyboards(call):
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
         bot.send
       except:
-        bot.send_message(config.tg, text = _("RAM Load history load error"))
+        bot.send_message(config.tg, text = ("RAM Load history load error"))
   # RAM graph
 
   # TimeDiff graph
@@ -1072,7 +1071,7 @@ def inlinekeyboards(call):
         timediff_30m = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1093,7 +1092,7 @@ def inlinekeyboards(call):
         timediff_1h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1114,7 +1113,7 @@ def inlinekeyboards(call):
         timediff_3h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1135,7 +1134,7 @@ def inlinekeyboards(call):
         timediff_6h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1156,7 +1155,7 @@ def inlinekeyboards(call):
         timediff_12h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1177,7 +1176,7 @@ def inlinekeyboards(call):
         timediff_1d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1198,7 +1197,7 @@ def inlinekeyboards(call):
         timediff_3d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1219,7 +1218,7 @@ def inlinekeyboards(call):
         timediff_5d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1240,7 +1239,7 @@ def inlinekeyboards(call):
         timediff_7d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1261,7 +1260,7 @@ def inlinekeyboards(call):
         timediff_14d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1282,7 +1281,7 @@ def inlinekeyboards(call):
         timediff_21d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
     if call.data == "timediffhist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "timediff.dat"), sep=";", encoding="utf-8", header=None)
@@ -1304,7 +1303,7 @@ def inlinekeyboards(call):
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
         bot.send
       except:
-        bot.send_message(config.tg, text = _("Time Diff history load error"))
+        bot.send_message(config.tg, text = ("Time Diff history load error"))
   # TimeDiff graph
 
   # PING graph
@@ -1332,7 +1331,7 @@ def inlinekeyboards(call):
         pingcheck_30m = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1353,7 +1352,7 @@ def inlinekeyboards(call):
         pingcheck_1h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1374,7 +1373,7 @@ def inlinekeyboards(call):
         pingcheck_3h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1395,7 +1394,7 @@ def inlinekeyboards(call):
         pingcheck_6h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1416,7 +1415,7 @@ def inlinekeyboards(call):
         pingcheck_12h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1437,7 +1436,7 @@ def inlinekeyboards(call):
         pingcheck_1d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1458,7 +1457,7 @@ def inlinekeyboards(call):
         pingcheck_3d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1479,7 +1478,7 @@ def inlinekeyboards(call):
         pingcheck_5d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1500,7 +1499,7 @@ def inlinekeyboards(call):
         pingcheck_7d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1521,7 +1520,7 @@ def inlinekeyboards(call):
         pingcheck_14d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1542,7 +1541,7 @@ def inlinekeyboards(call):
         pingcheck_21d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
     if call.data == "pinghist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "pingcheck.dat"), sep=";", encoding="utf-8", header=None)
@@ -1564,7 +1563,7 @@ def inlinekeyboards(call):
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
         bot.send
       except:
-        bot.send_message(config.tg, text = _("Ping check history load error"))
+        bot.send_message(config.tg, text = ("Ping check history load error"))
   # PING graph
 
   # Network graph
@@ -1602,7 +1601,7 @@ def inlinekeyboards(call):
         networkload_1h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1633,7 +1632,7 @@ def inlinekeyboards(call):
         networkload_1h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1664,7 +1663,7 @@ def inlinekeyboards(call):
         networkload_3h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1695,7 +1694,7 @@ def inlinekeyboards(call):
         networkload_6h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1726,7 +1725,7 @@ def inlinekeyboards(call):
         networkload_12h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1757,7 +1756,7 @@ def inlinekeyboards(call):
         networkload_24h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_24h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1788,7 +1787,7 @@ def inlinekeyboards(call):
         networkload_72h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_72h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1819,7 +1818,7 @@ def inlinekeyboards(call):
         networkload_120h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_120h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1850,7 +1849,7 @@ def inlinekeyboards(call):
         networkload_168h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_168h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1881,7 +1880,7 @@ def inlinekeyboards(call):
         networkload_336h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_336h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1912,7 +1911,7 @@ def inlinekeyboards(call):
         networkload_504h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_504h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
     if call.data == "networkhist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "networkload.dat"), sep=";", encoding="utf-8", header=None)
@@ -1943,7 +1942,7 @@ def inlinekeyboards(call):
         networkload_720h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_720h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
-        bot.send_message(config.tg, text = _("Network Utilization history load error"))
+        bot.send_message(config.tg, text = ("Network Utilization history load error"))
   # Network graph
 
   # diskio graph
@@ -1981,7 +1980,7 @@ def inlinekeyboards(call):
         diskioload_1h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_1h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2012,7 +2011,7 @@ def inlinekeyboards(call):
         diskioload_1h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_3h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2043,7 +2042,7 @@ def inlinekeyboards(call):
         diskioload_3h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_6h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2074,7 +2073,7 @@ def inlinekeyboards(call):
         diskioload_6h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_12h":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2105,7 +2104,7 @@ def inlinekeyboards(call):
         diskioload_12h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_1d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2136,7 +2135,7 @@ def inlinekeyboards(call):
         diskioload_24h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_24h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_3d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2167,7 +2166,7 @@ def inlinekeyboards(call):
         diskioload_72h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_72h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_5d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2198,7 +2197,7 @@ def inlinekeyboards(call):
         diskioload_120h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_120h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_7d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2229,7 +2228,7 @@ def inlinekeyboards(call):
         diskioload_168h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_168h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_14d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2260,7 +2259,7 @@ def inlinekeyboards(call):
         diskioload_336h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_336h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_21d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2291,7 +2290,7 @@ def inlinekeyboards(call):
         diskioload_504h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_504h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
     if call.data == "diskiohist_30d":
       try:
         df = pd.read_csv(os.path.join(config.serverbotpathdb, "diskioload.dat"), sep=";", encoding="utf-8", header=None)
@@ -2322,7 +2321,7 @@ def inlinekeyboards(call):
         diskioload_720h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_720h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
-        bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
+        bot.send_message(config.tg, text = ("Disk I/O Utilization history load error"))
   # diskio graph
 
 
@@ -2333,7 +2332,7 @@ def inlinekeyboards(call):
 @bot.message_handler(func=lambda message: message.text == lt_linuxtools)
 def command_linuxtools(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=_("Be careful. Some processes need time. ") + "\U000023F3", reply_markup=markuplinux)
+    bot.send_message(config.tg, text=("Be careful. Some processes need time. ") + "\U000023F3", reply_markup=markuplinux)
   else:
     pass
 # /Linux tools start
@@ -2347,9 +2346,9 @@ def command_pingcheck(message):
       pingcheck = "ping -c 5 " + config.srvping
       pingcheck = str(subprocess.check_output(pingcheck, shell = True,encoding='utf-8'))
       bot.send_message(config.tg, text=pingcheck, reply_markup=markuplinux)
-      historygetping("db/pingcheck.dat",30,_("ms"),_("Ping test"),"/tmp/pingcheck.png",pingcheckhist)
+      historygetping("db/pingcheck.dat",30,("ms"),("Ping test"),"/tmp/pingcheck.png",pingcheckhist)
     except:
-      bot.send_message(config.tg, text=_("Can't execute ping test"), reply_markup=markuplinux)
+      bot.send_message(config.tg, text=("Can't execute ping test"), reply_markup=markuplinux)
   else:
     pass
 # /Ping test
@@ -2365,7 +2364,7 @@ def command_traceroutecheck(message):
       traceroutecheck = str(subprocess.check_output(traceroutecheck, shell = True,encoding='utf-8'))
       bot.send_message(config.tg, text=traceroutecheck, reply_markup=markuplinux)
     except:
-      bot.send_message(config.tg, text=_("Can't execute tracerote command"), reply_markup=markuplinux)
+      bot.send_message(config.tg, text=("Can't execute tracerote command"), reply_markup=markuplinux)
   else:
     pass
 # /Traceroute test
@@ -2379,7 +2378,7 @@ def command_timediff(message):
       topps = str(subprocess.check_output(topps, shell = True,encoding='utf-8'))
       bot.send_message(config.tg, text=topps, reply_markup=markuplinux)
     except:
-      bot.send_message(config.tg, text=_("Can't get top processes"), reply_markup=markuplinux)
+      bot.send_message(config.tg, text=("Can't get top processes"), reply_markup=markuplinux)
   else:
     pass
 # /Top processes
@@ -2389,10 +2388,10 @@ def command_timediff(message):
 def command_srvstart(message):
   if message.from_user.id == config.tg:
     try:
-      startt = _("System start: ") + str(datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%b/%d/%Y %H:%M:%S"))
+      startt = ("System start: ") + str(datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%b/%d/%Y %H:%M:%S"))
       bot.send_message(config.tg, text=startt, reply_markup=markuplinux)
     except:
-      bot.send_message(config.tg, text=_("Can't get system start date"), reply_markup=markuplinux)
+      bot.send_message(config.tg, text=("Can't get system start date"), reply_markup=markuplinux)
   else:
     pass
 # /Server start date/time
@@ -2414,10 +2413,10 @@ def command_currntwrkload(message):
       recvspd = (bytes_recv1-bytes_recv)/1024/1024*8
       sentspd = str((round(sentspd, 2)))
       recvspd = str((round(recvspd, 2)))
-      bot.send_message(config.tg, text=_("*Current network load\nIncoming:* _") + recvspd + _(" Mb/s_\n*Outgoing:* _") + sentspd + _(" Mb/s_"), parse_mode="Markdown", reply_markup=markuplinux)
-      historygetnb("db/networkload.dat",0.5,_("Mb/s"),_("Upload"),_("Download"),"/tmp/networkload.png",networkcheckhist)
+      bot.send_message(config.tg, text=("*Current network load\nIncoming:* _") + recvspd + (" Mb/s_\n*Outgoing:* _") + sentspd + (" Mb/s_"), parse_mode="Markdown", reply_markup=markuplinux)
+      historygetnb("db/networkload.dat",0.5,("Mb/s"),("Upload"),("Download"),"/tmp/networkload.png",networkcheckhist)
     except:
-      bot.send_message(config.tg, text=_("Can't get current network load"), parse_mode="Markdown", reply_markup=markuplinux)
+      bot.send_message(config.tg, text=("Can't get current network load"), parse_mode="Markdown", reply_markup=markuplinux)
   else:
     pass
 # /Current network load
@@ -2439,10 +2438,10 @@ def command_currdiskload(message):
       writio = (bytes_writ1-bytes_writ)/1024/1024
       readio = str((round(readio, 2)))
       writio = str((round(writio, 2)))
-      bot.send_message(config.tg, text=_("*Current disk load\nRead:* _") + readio + _(" MB/s_\n*Write:* _") + writio + _(" MB/s_"), parse_mode="Markdown")
-      historygetdio("db/diskioload.dat",0.5,_("MB/s"),_("Read"),_("Write"),"/tmp/diskioload.png",diskiocheckhist)
+      bot.send_message(config.tg, text=("*Current disk load\nRead:* _") + readio + (" MB/s_\n*Write:* _") + writio + (" MB/s_"), parse_mode="Markdown")
+      historygetdio("db/diskioload.dat",0.5,("MB/s"),("Read"),("Write"),"/tmp/diskioload.png",diskiocheckhist)
     except:
-      bot.send_message(config.tg, text=_("Can't get current disk load"), parse_mode="Markdown")
+      bot.send_message(config.tg, text=("Can't get current disk load"), parse_mode="Markdown")
   else:
     pass
 # /Disk I/O
@@ -2454,7 +2453,7 @@ def command_currdiskload(message):
 @bot.message_handler(func=lambda message: message.text == lt_spdtst)
 def command_speedtest(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=_("Check server network speed. ") + "\U0001F4E1", reply_markup=markupspeedtest)
+    bot.send_message(config.tg, text=("Check server network speed. ") + "\U0001F4E1", reply_markup=markupspeedtest)
   else:
     pass
 # Network speed start
@@ -2471,7 +2470,7 @@ def command_testspeed_france(message):
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
       bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
     except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
+      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
   else:
     pass
 # Network speed France
@@ -2488,7 +2487,7 @@ def command_testspeed_germany(message):
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
       bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
     except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
+      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
   else:
     pass
 # Network speed Germany
@@ -2505,7 +2504,7 @@ def command_testspeed_netherlands(message):
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
       bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
     except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
+      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
   else:
     pass
 # Network speed Netherlands
@@ -2522,7 +2521,7 @@ def command_testspeed_uk(message):
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
       bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
     except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
+      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
   else:
     pass
 # Network speed United Kingdom
@@ -2531,7 +2530,7 @@ def command_testspeed_uk(message):
 @bot.message_handler(func=lambda message: message.text == lt_backlinux)
 def command_backtolinux(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=_("Be careful. Some processes need time ") + " \U000023F3", reply_markup=markuplinux)
+    bot.send_message(config.tg, text=("Be careful. Some processes need time ") + " \U000023F3", reply_markup=markuplinux)
   else:
     pass
 # /Back to linux tools
@@ -2544,7 +2543,7 @@ def command_backtolinux(message):
 @bot.message_handler(func=lambda message: message.text == lt_mainmenu)
 def command_srvstart(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=_("Start menu"), reply_markup=markup)
+    bot.send_message(config.tg, text=("Start menu"), reply_markup=markup)
   else:
     pass
 # /Main menu
@@ -2573,7 +2572,7 @@ def AlertsNotificationsRam():
         if int(float(memload)) >= config.memloadalarm:
           if alrtprdmem in config.repeattimealarmsrv:
             try:
-              bot.send_message(config.tg, text="\U0001F6A8 " + _("High memory load!!! ") + memload + _("% I recommend you to restart your node "),  parse_mode="Markdown")
+              bot.send_message(config.tg, text="\U0001F6A8 " + ("High memory load!!! ") + memload + ("% I recommend you to restart your node "),  parse_mode="Markdown")
             except:
               pass
             alrtprdmem +=5
@@ -2604,7 +2603,7 @@ def AlertsNotificationsCPU():
         if int(float(cpuutilalert)) >= config.cpuutilalarm:
           if alrtprdcpu in config.repeattimealarmsrv:
             try:
-              bot.send_message(config.tg,"\U000026A1" + _("High CPU Utilization! ") + cpuutilalert + "%")
+              bot.send_message(config.tg,"\U000026A1" + ("High CPU Utilization! ") + cpuutilalert + "%")
             except:
               pass
             alrtprdcpu +=5
@@ -2636,7 +2635,7 @@ def AlertsNotificationsping():
         if int(float(pingc)) >= config.pingcalarm:
           if alrtprdpng in config.repeattimealarmsrv:
             try:
-              bot.send_message(config.tg,"\U000026A1 " + _("High ping! ") + pingc + " ms")
+              bot.send_message(config.tg,"\U000026A1 " + ("High ping! ") + pingc + " ms")
             except:
               pass
             alrtprdpng +=5
