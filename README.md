@@ -53,7 +53,7 @@ If you get History load error, remove bot files from /tmp
 sudo rm -rf /tmp/*.log
 sudo rm -rf /tmp/*.png
 
-Find in bot.py telebot.logger.setLevel(logging.ERROR) and change ERROR to DEBUG, restart tontgbot service and execute
+Find in bot.py telebot.logger.setLevel(logging.ERROR) and change ERROR to DEBUG, restart serverbot service and execute
   ```sh
-$ journalctl -e -u tontgbot > /opt/tontgbot/servicelog.log
+$ journalctl -e -u serverbot > ~/serverbot/servicelog.log
 ```
