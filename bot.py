@@ -82,7 +82,8 @@ ram = types.KeyboardButton(lt_ram)
 disks = types.KeyboardButton(lt_disks)
 currntdiskload = types.KeyboardButton(lt_currntdiskload)
 linuxtools = types.KeyboardButton(lt_linuxtools)
-markup.row(cpu,ram,disks,currntdiskload,linuxtools)
+markup.row(cpu,ram,disks)
+markup.row(currntdiskload,linuxtools)
 # /Default markup
 
 # Linux markup
