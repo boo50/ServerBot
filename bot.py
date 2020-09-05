@@ -27,9 +27,9 @@ import gettext
 bot = telebot.TeleBot(config.BotAPIKey)
 # /API Token
 
-#lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
-#lang_translations.install()
-#_= lang_translations.gettext
+lang_translations = gettext.translation('base', localedir=os.path.join(config.serverbotpath, "locales"), languages=['en'])
+lang_translations.install()
+_= lang_translations.gettext
 
 # Log
 logger = telebot.logger
