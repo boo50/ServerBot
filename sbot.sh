@@ -10,9 +10,9 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
-NAME=tgserverbot
-PIDFILE=/home/user/serverbot/serverbot.pid
-DAEMON=/home/user/serverbot/bot.py
+NAME=serverbot
+PIDFILE=/home/<user>/serverbot/serverbot.pid
+DAEMON=/home/<user>/serverbot/bot.py
 
 case "$1" in
   start)
