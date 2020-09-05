@@ -23,20 +23,13 @@ import matplotlib.pyplot as plt
 import gettext 
 
 
-# ##### TONTgBot
-
 # API Token
-bot = telebot.TeleBot(config.TgBotAPIKey)
+bot = telebot.TeleBot(config.BotAPIKey)
 # /API Token
-
-# ##### TONTgBot
 
 lang_translations = gettext.translation('base', localedir=os.path.join(config.tontgpath, "locales"), languages=['en'])
 lang_translations.install()
 _ = lang_translations.gettext
-
-dotenv_path = (os.path.join(config.tf, "script/env.sh"))
-load_dotenv(dotenv_path)
 
 # Log
 logger = telebot.logger
@@ -53,10 +46,6 @@ lt_ram = _("RAM")
 lt_ram = "\U0001F39A " + lt_ram
 lt_disks = _("Disk usage")
 lt_disks = "\U0001F4BE " + lt_disks
-lt_validatortools = _("Validator tools")
-lt_validatortools = "\U0001F48E " + lt_validatortools
-lt_graphqltools = _("GraphQL tools")
-lt_graphqltools = "\U0001F4A0 " + lt_graphqltools
 lt_linuxtools = _("Linux tools")
 lt_linuxtools = "\U0001F9F0 " + lt_linuxtools
 #----
@@ -79,79 +68,18 @@ lt_starttime = "\U0001F7E2 " + lt_starttime
 lt_mainmenu = _("Main menu")
 lt_mainmenu =  "\U0001F3E1 " + lt_mainmenu
 #----
-lt_tonwalletbal = _("Wallet balance")
-lt_tonwalletbal =  "\U0001F48E " + lt_tonwalletbal
-lt_timediff = _("Time Diff")
-lt_timediff =  "\U0000231A " + lt_timediff
-lt_eadnlkey = _("Election adnl key")
-lt_eadnlkey =  "\U0001F511 " + lt_eadnlkey
-lt_errorsinlogs = _("Error logs")
-lt_errorsinlogs =  "\U0001F4D1 " + lt_errorsinlogs
-lt_validatorinfomenu = _("Info")
-lt_validatorinfomenu =  "\U00002139\U0000FE0F " + lt_validatorinfomenu
-lt_slowinlogs = _("Slow logs")
-lt_slowinlogs =  "\U0001F422 " + lt_slowinlogs
-lt_restartvalidnodee = _("Restart validator")
-lt_restartvalidnodee =  "\U0001F504 " + lt_restartvalidnodee
-lt_currentstake = _("Current stake")
-lt_currentstake =  "\U0001F522 " + lt_currentstake
-lt_updatestake = _("Update stake")
-lt_updatestake = "\U00002195\U0000FE0F " + lt_updatestake
-#----
-lt_validatorinfelc = _("Elections")
-lt_validatorinfelc =  "\U0001F5F3\U0000FE0F " + lt_validatorinfelc
-#----
-lt_andorraspdt =  _("Andorra")
-lt_andorraspdt =  "\U0001F1E6\U0001F1E9 " + lt_andorraspdt
-lt_austriaspdt =  _("Austria")
-lt_austriaspdt =  "\U0001F1E6\U0001F1F9 " + lt_austriaspdt
-lt_belgiumspdt =  _("Belgium")
-lt_belgiumspdt =  "\U0001F1E7\U0001F1EA " + lt_belgiumspdt
-lt_bosherzspdt =  _("Bosnia and Herzegovina")
-lt_bosherzspdt =  "\U0001F1E7\U0001F1E6 " + lt_bosherzspdt
-lt_croatiaspdt =  _("Croatia")
-lt_croatiaspdt =  "\U0001F1ED\U0001F1F7 " + lt_croatiaspdt
-lt_czechrpspdt =  _("Czech Republic")
-lt_czechrpspdt =  "\U0001F1E8\U0001F1FF " + lt_czechrpspdt
-lt_denmarkspdt =  _("Denmark")
 lt_denmarkspdt =  "\U0001F1E9\U0001F1F0 " + lt_denmarkspdt
 lt_francefspdt =  _("France")
 lt_francefspdt =  "\U0001F1EB\U0001F1F7 " + lt_francefspdt
 lt_germanyspdt =  _("Germany")
-lt_germanyspdt =  "\U0001F1E9\U0001F1EA " + lt_germanyspdt
-lt_hungaryspdt =  _("Hungary")
-lt_hungaryspdt =  "\U0001F1ED\U0001F1FA " + lt_hungaryspdt
-lt_italyflspdt =  _("Italy")
-lt_italyflspdt =  "\U0001F1EE\U0001F1F9 " + lt_italyflspdt
-lt_liechtnspdt =  _("Liechtenstein")
-lt_liechtnspdt =  "\U0001F1F1\U0001F1EE " + lt_liechtnspdt
-lt_luxmbrgspdt =  _("Luxembourg")
-lt_luxmbrgspdt =  "\U0001F1F1\U0001F1FA " + lt_luxmbrgspdt
 lt_nthlndsspdt =  _("Netherlands")
 lt_nthlndsspdt =  "\U0001F1F3\U0001F1F1 " + lt_nthlndsspdt
-lt_polandfspdt =  _("Poland")
-lt_polandfspdt =  "\U0001F1F5\U0001F1F1 " + lt_polandfspdt
-lt_serbiafspdt =  _("Serbia")
-lt_serbiafspdt =  "\U0001F1F7\U0001F1F8 " + lt_serbiafspdt
-lt_slovakispdt =  _("Slovakia")
-lt_slovakispdt =  "\U0001F1F8\U0001F1F0 " + lt_slovakispdt
-lt_slovenispdt =  _("Slovenia")
-lt_slovenispdt =  "\U0001F1F8\U0001F1EE " + lt_slovenispdt
-lt_spainflspdt =  _("Spain")
-lt_spainflspdt =  "\U0001F1EA\U0001F1F8 " + lt_spainflspdt
-lt_swtzlndspdt =  _("Switzerland")
 lt_swtzlndspdt =  "\U0001F1E8\U0001F1ED " + lt_swtzlndspdt
 lt_unitedkspdt =  _("United Kingdom")
 lt_unitedkspdt =  "\U0001F1EC\U0001F1E7 " + lt_unitedkspdt
 lt_backlinux =  _("Back to Linux tools")
 lt_backlinux = "\U0001F519 " + lt_backlinux
-lt_backvalidatorm =  _("Back to Validator tools")
-lt_backvalidatorm = "\U0001F519 " + lt_backvalidatorm
 # /Menu vars
-
-
-
-
 
 # Default markup
 markup = types.ReplyKeyboardMarkup()
@@ -159,11 +87,8 @@ cpu = types.KeyboardButton(lt_cpu)
 ram = types.KeyboardButton(lt_ram)
 disks = types.KeyboardButton(lt_disks)
 currntdiskload = types.KeyboardButton(lt_currntdiskload)
-validatortools = types.KeyboardButton(lt_validatortools)
-graphqltools = types.KeyboardButton(lt_graphqltools)
 linuxtools = types.KeyboardButton(lt_linuxtools)
-markup.row(cpu,ram,disks,currntdiskload)
-markup.row(validatortools,graphqltools,linuxtools)
+markup.row(cpu,ram,disks,currntdiskload,linuxtools)
 # /Default markup
 
 # Linux markup
@@ -183,65 +108,17 @@ markuplinux.row(currntwrkload,currntdiskload)
 markuplinux.row(mainmenu)
 # /Linux markup
 
-# Validator markup
-markupValidator = types.ReplyKeyboardMarkup()
-tonwalletbal = types.KeyboardButton(lt_tonwalletbal)
-timediff = types.KeyboardButton(lt_timediff)
-eadnlkey = types.KeyboardButton(lt_eadnlkey)
-errorsinlogs = types.KeyboardButton(lt_errorsinlogs)
-validatorinfomenu = types.KeyboardButton(lt_validatorinfomenu)
-slowinlogs = types.KeyboardButton(lt_slowinlogs)
-restartvalidnodee = types.KeyboardButton(lt_restartvalidnodee)
-currentstake = types.KeyboardButton(lt_currentstake)
-updatestake = types.KeyboardButton(lt_updatestake)
-mainmenu = types.KeyboardButton(lt_mainmenu)
-markupValidator.row(tonwalletbal,currentstake,updatestake)
-markupValidator.row(timediff,eadnlkey,restartvalidnodee)
-markupValidator.row(validatorinfomenu,errorsinlogs,slowinlogs)
-markupValidator.row(mainmenu)
-# /Validator markup
-
-# Validator Info markup
-markupValidatorInfo = types.ReplyKeyboardMarkup()
-validatorinfelc = types.KeyboardButton(lt_validatorinfelc)
-mainmenu = types.KeyboardButton(lt_mainmenu)
-backvalidatorm = types.KeyboardButton(lt_backvalidatorm)
-markupValidatorInfo.row(validatorinfelc)
-markupValidatorInfo.row(backvalidatorm,mainmenu)
-# /Validator Info markup
-
 # Speedtest markup
 markupspeedtest = types.ReplyKeyboardMarkup()
-andorraspdt = types.KeyboardButton(lt_andorraspdt)
-austriaspdt = types.KeyboardButton(lt_austriaspdt)
-belgiumspdt = types.KeyboardButton(lt_belgiumspdt)
-bosherzspdt = types.KeyboardButton(lt_bosherzspdt)
-croatiaspdt = types.KeyboardButton(lt_croatiaspdt)
-czechrpspdt = types.KeyboardButton(lt_czechrpspdt)
-denmarkspdt = types.KeyboardButton(lt_denmarkspdt)
 francefspdt = types.KeyboardButton(lt_francefspdt)
 germanyspdt = types.KeyboardButton(lt_germanyspdt)
-hungaryspdt = types.KeyboardButton(lt_hungaryspdt)
-italyflspdt = types.KeyboardButton(lt_italyflspdt)
-liechtnspdt = types.KeyboardButton(lt_liechtnspdt)
-luxmbrgspdt = types.KeyboardButton(lt_luxmbrgspdt)
 nthlndsspdt = types.KeyboardButton(lt_nthlndsspdt)
-polandfspdt = types.KeyboardButton(lt_polandfspdt)
-serbiafspdt = types.KeyboardButton(lt_serbiafspdt)
-slovakispdt = types.KeyboardButton(lt_slovakispdt)
-slovenispdt = types.KeyboardButton(lt_slovenispdt)
-spainflspdt = types.KeyboardButton(lt_spainflspdt)
-swtzlndspdt = types.KeyboardButton(lt_swtzlndspdt)
 unitedkspdt = types.KeyboardButton(lt_unitedkspdt)
 backlinux = types.KeyboardButton(lt_backlinux)
 mainmenu = types.KeyboardButton(lt_mainmenu)
-markupspeedtest.row(andorraspdt,austriaspdt,belgiumspdt,bosherzspdt,croatiaspdt,czechrpspdt,denmarkspdt)
-markupspeedtest.row(francefspdt,germanyspdt,hungaryspdt,italyflspdt,liechtnspdt,luxmbrgspdt,nthlndsspdt)
-markupspeedtest.row(polandfspdt,serbiafspdt,slovakispdt,slovenispdt,spainflspdt,swtzlndspdt,unitedkspdt)
+markupspeedtest.row(francefspdt,germanyspdt,nthlndsspdt,unitedkspdt)
 markupspeedtest.row(backlinux,mainmenu)
 # /Speedtest markup
-
-liteclcmd = config.tf + "ton/build/lite-client/lite-client  -p '" + config.tk + "liteserver.pub' -a '127.0.0.1:3031' -C '" + config.tf + "configs/ton-global.config.json' -v 0 -c "
 
 # Get id for tg value
 @bot.message_handler(commands=["id"])
@@ -255,7 +132,7 @@ def get_id(i):
 @bot.message_handler(commands=["start", "help"])
 def send_welcome(message):
   if message.from_user.id == config.tg:
-    bot.send_message(config.tg, _("Hello") + "\U0001F44B\n" + _("I'm here to help you with your TON Validatior server ") + " \U0001F9BE\n" + _("Let's choose what you want?"),reply_markup=markup)
+    bot.send_message(config.tg, _("Hello") + "\U0001F44B\n" + _("I'm here to help you with your server ") + " \U0001F9BE\n" + _("Let's choose what you want?"),reply_markup=markup)
   else:
     pass
 # /Start
@@ -304,28 +181,6 @@ types.InlineKeyboardButton(text=_("14d"), callback_data="ramhist_14d"),
 types.InlineKeyboardButton(text=_("21d"), callback_data="ramhist_21d"),
 types.InlineKeyboardButton(text=_("30d"), callback_data="ramhist_30d"))
 #RAM
-
-# Time Diff
-timediffhist = types.InlineKeyboardMarkup()
-timediffhist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="timediffhist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="timediffhist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="timediffhist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="timediffhist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="timediffhist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="timediffhist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="timediffhistmore"))
-
-timediffhistmore = types.InlineKeyboardMarkup()
-timediffhistmore.row(
-types.InlineKeyboardButton(text=_("\U00002190"), callback_data="timediffhist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="timediffhist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="timediffhist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="timediffhist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="timediffhist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="timediffhist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="timediffhist_30d"))
-# Time Diff
 
 #PING
 pingcheckhist = types.InlineKeyboardMarkup()
@@ -392,30 +247,6 @@ types.InlineKeyboardButton(text=_("14d"), callback_data="diskiohist_14d"),
 types.InlineKeyboardButton(text=_("21d"), callback_data="diskiohist_21d"),
 types.InlineKeyboardButton(text=_("30d"), callback_data="diskiohist_30d"))
 # Disk io
-
-# Slow logs events
-slowloghist = types.InlineKeyboardMarkup()
-slowloghist.row(
-types.InlineKeyboardButton(text=_("30m"), callback_data="slowhist_30m"),
-types.InlineKeyboardButton(text=_("1h"), callback_data="slowhist_1h"),
-types.InlineKeyboardButton(text=_("3h"), callback_data="slowhist_3h"),
-types.InlineKeyboardButton(text=_("6h"), callback_data="slowhist_6h"),
-types.InlineKeyboardButton(text=_("12h"), callback_data="slowhist_12h"),
-types.InlineKeyboardButton(text=_("1d"), callback_data="slowhist_1d"),
-types.InlineKeyboardButton(text=_("+"), callback_data="slowhistmore"))
-
-slowhistmore = types.InlineKeyboardMarkup()
-slowhistmore.row(
-types.InlineKeyboardButton(text="\U00002190", callback_data="slowloghist"),
-types.InlineKeyboardButton(text=_("3d"), callback_data="slowhist_3d"),
-types.InlineKeyboardButton(text=_("5d"), callback_data="slowhist_5d"),
-types.InlineKeyboardButton(text=_("7d"), callback_data="slowhist_7d"),
-types.InlineKeyboardButton(text=_("14d"), callback_data="slowhist_14d"),
-types.InlineKeyboardButton(text=_("21d"), callback_data="slowhist_21d"),
-types.InlineKeyboardButton(text=_("30d"), callback_data="slowhist_30d"))
-# Slow logs events
-
-
 
 # InlineKeyboards
 
@@ -593,12 +424,6 @@ def historygetslowlog(f,t,lbl,ptitle,poutf,rm):
     bot.send_message(config.tg, text = _("History load error"))
 #/History load welcome
 
-
-
-# F
-
-
-
 # CPU
 @bot.message_handler(func=lambda message: message.text == lt_cpu)
 def command_cpu(message):
@@ -649,216 +474,7 @@ def command_disk(message):
     pass
 # /Disk
 
-
-# lt_graphqltools
-@bot.message_handler(func=lambda message: message.text == lt_graphqltools)
-def command_linuxtools(message):
-  if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=_("Thank you for your interest, but right now, Tonlab does not have GraphQL SDK for python. Please keep in touch. Feature will be available soon."))
-  else:
-    pass
-# lt_graphqltools
-
-#######################################################
-# Validator tools
-
-# Validator tools start
-@bot.message_handler(func=lambda message: message.text in (lt_validatortools,lt_backvalidatorm))
-def command_linuxtools(message):
-  if message.from_user.id == config.tg:
-    try:
-      master, slave = pty.openpty()
-      stdout = None
-      stderr = None
-      totalcheckvalidtrs =  liteclcmd + "'getconfig 34' | grep cur_validators | awk -F':| ' {'print $6,$8,$10'}"
-      totalshards =  liteclcmd + "'allshards' | grep 'shard #' | wc -l"
-      totalcheckvalidtrs = subprocess.Popen(totalcheckvalidtrs + " ; " + totalshards, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-      stdout, stderr = totalcheckvalidtrs.communicate(timeout=2)
-      stdoutlst = stdout.split()
-      os.close(slave)
-      os.close(master)
-      bot.send_message(config.tg, text="\U0001F48E " + _("You are welcome") + " \U0001F48E \n" + _("Workchain shards ") + str(stdoutlst[3]) + " \U0001F537\n" + _("Now: Total validators ") + str(stdoutlst[2]) + _("\nValidators Since ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[0])).strftime('%B/%d %H:%M:%S')) + _("\nValidators Until ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[1])).strftime('%B/%d %H:%M:%S')), reply_markup=markupValidator)
-    except Exception as i:
-      kill(totalcheckvalidtrs.pid)
-      os.close(slave)
-      os.close(master)
-      bot.send_message(config.tg, text="\U0001F48E " + _("You are welcome") + " \U0001F48E", reply_markup=markupValidator)
-  else:
-    pass
-# /Validator tools start
-
-
-# Wallet balance
-@bot.message_handler(func=lambda message: message.text == lt_tonwalletbal)
-def command_wallbal(message):
-  if message.from_user.id == config.tg:
-    try:
-      hstnm = str(os.uname()[1].split('.')[0])
-      wlt = "head -1 " + config.tk + hstnm +".addr"
-      wlt = str(subprocess.check_output(wlt, shell = True,encoding='utf-8').rstrip())
-      acctoncli = "cd " + config.ud + " && " + config.ud + "/tonos-cli account " + wlt + " | grep -i 'balance' | awk '{print $2}'"
-      acctoncli = str(subprocess.check_output(acctoncli, shell = True,encoding='utf-8'))
-      acctonclibal = str(int(acctoncli) / 1000000000)
-      acctonclibal = _("Balance: ") + acctonclibal + " \U0001F48E"
-      bot.send_message(config.tg, text=acctonclibal, reply_markup=markupValidator)
-    except:
-      bot.send_message(config.tg, text=_("Can't get wallet balance"), reply_markup=markupValidator)
-  else:
-    pass
-# /Wallet balance
-
-# Time Diff
-@bot.message_handler(func=lambda message: message.text == lt_timediff)
-def command_timediff(message):
-  if message.from_user.id == config.tg:
-    try:
-      master, slave = pty.openpty()
-      stdout = None
-      stderr = None
-      timediffcmd = "/bin/bash " + config.tf + "scripts/check_node_sync_status.sh | grep TIME_DIFF | awk '{print $4}'"
-      timediff = subprocess.Popen(timediffcmd, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-      outs, errs = timediff.communicate(timeout=2)
-      os.close(slave)
-      os.close(master)
-      bot.send_message(config.tg, text=_("Time Diff is ") + outs, reply_markup=markupValidator)
-      historygettd("db/timediff.dat",30,_("Difference"),_("Time Diff"),"/tmp/timediff.png",timediffhist)
-    except:
-      kill(timediff.pid)
-      os.close(slave)
-      os.close(master)
-      bot.send_message(config.tg, text=_("Time Diff check failed"), reply_markup=markupValidator)
-  else:
-    pass
-# /Time Diff
-
-# Election adnl key
-@bot.message_handler(func=lambda message: message.text == lt_eadnlkey)
-def command_adnlkey(message):
-  if message.from_user.id == config.tg:
-    try:
-      eladnlkey = "cat " + config.tk + "elections/*-election-adnl-key | grep 'new key' | awk '{print $4}'"
-      validator_key = "grep -rn " + config.tk + "elections/ -e 'validator public key' | awk '{print $NF}'"
-      eladnlkey = str(subprocess.check_output(eladnlkey, shell = True,encoding='utf-8').rstrip())  
-      validator_details = config.vu + str(subprocess.check_output(validator_key, shell = True,encoding='utf-8').rstrip())
-      if not os.path.exists(os.path.join(config.tontgpathdb, "adnlkeys.dat")):
-        os.mknod(os.path.join(config.tontgpathdb, "adnlkeys.dat"))
-      adnllstlch = os.popen("tail -n 1 " + config.tontgpathdb + "/adnlkeys.dat").read().rstrip()
-      adnlnwline = eladnlkey + ";" + validator_details
-      if str(adnllstlch) == str(adnlnwline):
-        pass
-      else:
-        with open(os.path.join(config.tontgpathdb, "adnlkeys.dat"), "a") as i:
-          i.write(eladnlkey + ";" + validator_details + "\n")
-          i.close()
-      adnlold = os.popen("tail -n 2 " + config.tontgpathdb + "/adnlkeys.dat | head -n 1").read().strip()
-      adnlnow = os.popen("tail -n 1 " + config.tontgpathdb + "/adnlkeys.dat").read().strip()
-      if str(adnlnow) == str(adnlold):
-        adnlkeyboard = types.InlineKeyboardMarkup()
-        url_button = types.InlineKeyboardButton(text=_("Validator details"), url=validator_details)
-        adnlkeyboard.add(url_button)
-        bot.send_message(config.tg, text=eladnlkey, reply_markup=adnlkeyboard)
-      else:
-        adnlold = adnlold.split(";")
-        adnlnow = adnlnow.split(";")
-        adnloldk = adnlold[0]
-        adnloldu = adnlold[1]
-        adnlnowk = adnlnow[0]
-        adnlnowu = adnlnow[1]
-        adnlkeyboard = types.InlineKeyboardMarkup()
-        url_button_old = types.InlineKeyboardButton(text= "\U0001F517" + _("Validator details. Old adnl key"), url=adnloldu)
-        adnlkeyboard.add(url_button_old)
-        url_button_new = types.InlineKeyboardButton(text= "\U0001F517" + _("Validator details. New adnl key"), url=adnlnowu)
-        adnlkeyboard.add(url_button_new)
-        bot.send_message(config.tg, text=_("Old adnl key ") + adnloldk + "\n" + _("New adnl key ") + adnlnowk, reply_markup=adnlkeyboard)
-    except:
-      bot.send_message(config.tg, text=_("Can't get adnl key "))
-  else:
-    pass
-# /Election adnl key
-
-# Info
-@bot.message_handler(func=lambda message: message.text == lt_validatorinfomenu)
-def command_errlog(message):
-  if message.from_user.id == config.tg:
-    try:
-      #errorlog = "tac " + config.tw + "/node.log | grep -n -m 25 -i 'error' > /tmp/node_error.log"
-      bot.send_message(config.tg, text=_("Validator info menu"), reply_markup=markupValidatorInfo)
-    except:
-      bot.send_message(config.tg, text = _("alidator info menu Error"), reply_markup=markupValidatorInfo)
-  else:
-    pass
-# Info
-
-# Error logs
-@bot.message_handler(func=lambda message: message.text == lt_errorsinlogs)
-def command_errlog(message):
-  if message.from_user.id == config.tg:
-    try:
-      #errorlog = "tac " + config.tw + "/node.log | grep -n -m 25 -i 'error' > /tmp/node_error.log"
-      errorlog = "egrep -n -i 'fail|error' " + config.tw + "/node.log | tail -n " + config.elogc + " > /tmp/node_error.log"
-      errorlogf = str(subprocess.call(errorlog, shell = True,encoding='utf-8'))
-      errfile = open('/tmp/node_error.log', 'rb')
-      bot.send_document(config.tg, errfile, reply_markup=markupValidator)
-    except:
-      bot.send_document(config.tg, text = _("Can't get error log"), reply_markup=markupValidator)
-  else:
-    pass
-# /Error logs
-
-# Slow logs
-@bot.message_handler(func=lambda message: message.text == lt_slowinlogs)
-def command_slowlog(message):
-  if message.from_user.id == config.tg:
-    try:
-      #slowlog = "tac " + config.tw + "/node.log | grep -n -m 25 -i 'error' > /tmp/node_slow.log"
-      slowlog = "grep -n -i 'slow' " + config.tw + "/node.log | tail -n " + config.slogc + " > /tmp/node_slow.log"
-      slowlogf = str(subprocess.call(slowlog, shell = True,encoding='utf-8'))
-      slwfile = open('/tmp/node_slow.log', 'rb')
-      bot.send_document(config.tg, slwfile, reply_markup=markupValidator)
-      historygetslowlog("db/slowlog.dat",30,_("Delay, ms"),_("Slow events"),"/tmp/slowlog.png",slowloghist)
-    except:
-      bot.send_document(config.tg, text = _("Can't get slow log"), reply_markup=markupValidator)
-  else:
-    pass
-# /Slow logs
-
-
-#######################################################
-# Validators Info tools
-
-# Election
-@bot.message_handler(func=lambda message: message.text == lt_validatorinfelc)
-def command_linuxtools(message):
-  if message.from_user.id == config.tg:
-    try:
-      master, slave = pty.openpty()
-      stdout = None
-      stderr = None
-      electstatus = liteclcmd + "'runmethod -1:3333333333333333333333333333333333333333333333333333333333333333 active_election_id' | grep result\: | awk '{print $3}'"
-      totalcheckvalidtrsbefore =  liteclcmd + "'getconfig 32' | grep prev_validators | awk -F':| ' {'print $6,$8,$10'}"
-      totalcheckvalidtrs =  liteclcmd + "'getconfig 34' | grep cur_validators | awk -F':| ' {'print $6,$8,$10'}"
-      totalcheckvalidtrs = subprocess.Popen(totalcheckvalidtrsbefore + " ; " + totalcheckvalidtrs + " ; " + electstatus, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-      stdout, stderr = totalcheckvalidtrs.communicate(timeout=2)
-      stdoutlst = stdout.split()
-      os.close(slave)
-      os.close(master)
-      if int(stdoutlst[6]) == 0:
-        ec = "closed \U0000274C"
-        ecstr = "\U0000274C"
-      else:
-        ec = "open \U00002705"
-        ecstr = "\U00002705"
-      bot.send_message(config.tg, text=str(ecstr) + _("Elections are ") + str(ec) +  _("\nBefore: Total validators ") + str(stdoutlst[2]) + _("\nValidators Since ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[0])).strftime('%B/%d %H:%M:%S')) + _("\nValidators Until ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[1])).strftime('%B/%d %H:%M:%S')) + _("\n\nNow: Total validators ") + str(stdoutlst[5]) + _("\nValidators Since ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[3])).strftime('%B/%d %H:%M:%S')) + _("\nValidators Until ") + str(datetime.datetime.fromtimestamp(int(stdoutlst[4])).strftime('%B/%d %H:%M:%S')), reply_markup=markupValidatorInfo)
-    except Exception as i:
-      kill(totalcheckvalidtrs.pid)
-      os.close(slave)
-      os.close(master)
-      bot.send_message(config.tg, text=_("Can't get elections information"), reply_markup=markupValidatorInfo)
-  else:
-    pass
-# /Validator tools start
-
-# Validators Info tools
+# Server Info tools
 #######################################################
 
 @bot.callback_query_handler(func = lambda call: True)
@@ -2710,389 +2326,6 @@ def inlinekeyboards(call):
         bot.send_message(config.tg, text = _("Disk I/O Utilization history load error"))
   # diskio graph
 
-  # SLOW graph
-    if call.data == "slowloghist":
-      bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=slowloghist)
-    if call.data == "slowhistmore":
-      bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=slowhistmore)
-    if call.data == "slowhist_30m":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(minutes=30)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[12, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_1h = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_1h":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=1)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[15, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_1h = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_3h":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=3)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_3h = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_6h":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=6)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_6h = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_12h":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=12)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_12h = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_1d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=24)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_1d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowloghist)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_3d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=72)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_3d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_5d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=120)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_5d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_7d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=168)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_7d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_14d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=336)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_14d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_21d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=504)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_21d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-    if call.data == "slowhist_30d":
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        df.iloc[:,0] = pd.to_datetime(df.iloc[:,0], unit='s')
-        period = df.iloc[:,0] > df.iloc[:,0].max() - pd.Timedelta(hours=720)
-        x = df.iloc[:,0].loc[period]
-        y = df.iloc[:,2].loc[period]
-        plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Delay, ms') 
-        plt.title('Slow events')
-        plt.grid(True)
-        plt.plot(x, y)
-        plt.gcf().autofmt_xdate()
-        plt.tight_layout()
-        plt.savefig('/tmp/slowlog.png')
-        plt.close() 
-        slowlog_30d = open('/tmp/slowlog.png', 'rb')
-        bot.edit_message_media(media=types.InputMedia(type='photo', media=slowlog_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=slowhistmore)
-        bot.send
-      except:
-        bot.send_message(config.tg, text = _("Slow events history load error"))
-  # SLOW graph
-
-  # Restart Validator
-    if call.data == "res":
-      try:
-        dorestart = types.InlineKeyboardMarkup()
-        dorestart_reply = types.InlineKeyboardButton(text=_("Starting restart process for Validator node"),callback_data="do_restart")
-        dorestart.add(dorestart_reply) 
-        bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=dorestart)
-        bot.send_chat_action(config.tg, "typing")
-        nodelogbr = str(subprocess.check_output(["du -msh " + config.tw + "/node.log | awk '{print $1}'"], shell = True,encoding='utf-8'))
-        nodelogbr = _("*Node.log size before restart :* _") + nodelogbr + "_"
-        bot.send_message(config.tg, text = nodelogbr, parse_mode="Markdown")
-        bot.send_chat_action(config.tg, "typing")
-        killvproc = "ps -eo pid,cmd | grep -i 'validator-engine' | grep -iv 'grep' | awk '{print $1}' | xargs kill -9 $1"
-        killvproc = str(subprocess.call(killvproc, shell = True,encoding='utf-8'))
-        bot.send_message(config.tg, text = _("Node stopped. RAM & node.log clean. Starting node"), reply_markup=markupValidator)
-        bot.send_chat_action(config.tg, "typing")
-        time.sleep(1)
-        if config.nodelogressave == 1:
-          tms = str(datetime.datetime.today().strftime("%b_%d_%Y-%H_%M_%S"))
-          nodelogsavelog = str(subprocess.call(["mv " + config.tw + "/node.log " + config.tw + "/node_before_" + tms + ".log"], shell = True,encoding='utf-8'))
-        else:
-          pass
-        time.sleep(3)
-        try:
-          master, slave = pty.openpty()
-          stdout = None
-          stderr = None
-          #runvproc = config.tontgpath + "/run.sh"
-          runvproc = "/bin/bash " + config.tf + "scripts/run.sh"
-          runvprocc = subprocess.Popen(runvproc, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-          stdout, stderr = runvprocc.communicate(timeout=5)
-          os.close(slave)
-          os.close(master)
-          bot.send_message(config.tg, text = stdout, reply_markup=markupValidator)
-        except Exception as i:
-          kill(runvprocc.pid)
-          os.close(slave)
-          os.close(master)
-          bot.send_message(config.tg, text = _("Start error. Try to start your node manually"), reply_markup=markupValidator)
-      except:
-        bot.send_message(config.tg, text = _("Restart error. Try to restart your node manually"), reply_markup=markupValidator)
-    if call.data == "nores":
-      norestart = types.InlineKeyboardMarkup()
-      norestart_reply = types.InlineKeyboardButton(text=_("Declined"),callback_data="no_exit")
-      norestart.add(norestart_reply) 
-      bot.edit_message_reply_markup(config.tg, message_id=call.message.message_id, reply_markup=norestart) 
-  else:
-    pass
-@bot.message_handler(func=lambda message: message.text == lt_restartvalidnodee)
-# Restart validator node
-def command_restartvalidator(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      restartkbd = types.InlineKeyboardMarkup()
-      restartvalidnod_1 = types.InlineKeyboardButton(text=_("Restart node"), callback_data="res")
-      restartkbd.add(restartvalidnod_1)
-      restartvalidnod_0 = types.InlineKeyboardButton(text=_("Don't restart the node"), callback_data="nores")
-      restartkbd.add(restartvalidnod_0)
-      bot.send_message(config.tg, text = _("Do you really want to restart validator node?"), reply_markup=restartkbd)
-    except:
-      bot.send_message(config.tg, text = _("Restart error"))
-  else:
-    pass
-# /Restart validator node
-
-# Current stake
-@bot.message_handler(func=lambda message: message.text == lt_currentstake)
-def command_currentstake(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      currentstake = "crontab -l | grep -oP 'validator_msig.sh ([0-9]+)' | awk '{print $2}'"
-      currentstake = str(subprocess.check_output(currentstake, shell = True,encoding='utf-8').rstrip())
-      bot.send_message(config.tg, text = _("Your current stake is ") + currentstake + " \U0001F48E", reply_markup=markupValidator)
-    except:
-      bot.send_message(config.tg, text = _("Can't get current stake"), reply_markup=markupValidator)
-  else:
-    pass
-# /Current stake 
-
-# Update stake
-@bot.message_handler(func=lambda message: message.text == lt_updatestake)
-def command_updatestake(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      uddatestake = "crontab -l | grep -oP 'validator_msig.sh ([0-9]+)' | awk '{print $2}'"
-      uddatestake = str(subprocess.check_output(uddatestake, shell = True,encoding='utf-8').rstrip())
-      bot.send_message(config.tg, text = _("Your current stake ") + uddatestake + " \U0001F48E \n" + _("To update your current stake, please send me command /updstake 10001, where 10001 is your new stake "), reply_markup=markupValidator)
-    except:
-      bot.send_message(config.tg, text = _("Update stake command error"), reply_markup=markupValidator)
-  else:
-    pass
-# /Update stake
-
-# Update stake command
-@bot.message_handler(commands=["updstake"])
-def send_welcome(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      stakesize = message.text.split()
-      stakesize = str(int(stakesize[1]))
-      updatestakecmd = "crontab -l | sed 's/validator_msig.sh \([0-9]\+\)/validator_msig.sh " + stakesize + "/' | crontab -"
-      updatestakecmd = str(subprocess.call(updatestakecmd, shell = True,encoding='utf-8'))
-      time.sleep(1)
-      currentstake = "crontab -l | grep -oP 'validator_msig.sh ([0-9]+)' | awk '{print $2}'"
-      currentstake = str(subprocess.check_output(currentstake, shell = True,encoding='utf-8').rstrip())
-      bot.send_message(config.tg, text = _("Your NEW stake: ") + currentstake + " \U0001F48E", reply_markup=markupValidator)
-    except:
-      try:
-        currentstake = "crontab -l | grep -oP 'validator_msig.sh ([0-9]+)' | awk '{print $2}'"
-        bot.send_message(config.tg, text = _("Update ERROR. Your current stake is ") + currentstake + " \U0001F48E", reply_markup=markupValidator)
-      except:
-        bot.send_message(config.tg, text = _("Update ERROR"), reply_markup=markupValidator)
-  else:
-    pass
-# /Update stake command
-
-# /Validator tools 
-#######################################################
-
 
 #######################################################
 # Linux tools
@@ -3105,20 +2338,6 @@ def command_linuxtools(message):
   else:
     pass
 # /Linux tools start
-
-# Validator ports listen check
-@bot.message_handler(func=lambda message: message.text == lt_ssvalid)
-def command_timediff(message):
-  if message.from_user.id == config.tg:
-    try:
-      ssvalidator = "ss -tlunp4 | grep -i 'validator'"
-      ssvalidator = str(subprocess.check_output(ssvalidator, shell = True,encoding='utf-8'))
-      bot.send_message(config.tg, text=ssvalidator, reply_markup=markuplinux)
-    except:
-      bot.send_message(config.tg, text=_("Can't check validator port listening"), reply_markup=markuplinux)
-  else:
-    pass
-# /Validator ports listen check
 
 # Ping test
 @bot.message_handler(func=lambda message: message.text == lt_ping)
@@ -3232,11 +2451,6 @@ def command_currdiskload(message):
 # /Linux tools
 #######################################################
 
-
-
-#######################################################
-# Network speed tool
-
 # Network speed start
 @bot.message_handler(func=lambda message: message.text == lt_spdtst)
 def command_speedtest(message):
@@ -3245,125 +2459,6 @@ def command_speedtest(message):
   else:
     pass
 # Network speed start
-
-# Network speed Andorra
-@bot.message_handler(func=lambda message: message.text == lt_andorraspdt)
-def command_testspeed_andorra(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 2530 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Andorra
-   
-# Network speed Austria
-@bot.message_handler(func=lambda message: message.text == lt_austriaspdt)
-def command_testspeed_austria(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 12390 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Austria
-
-# Network speed Belgium
-@bot.message_handler(func=lambda message: message.text == lt_belgiumspdt)
-def command_testspeed_belgium(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 5151 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Belgium
-
-# Network speed Bosnia and Herzegovina
-@bot.message_handler(func=lambda message: message.text == lt_bosherzspdt)
-def command_testspeed_bosnia_herzegovina(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 1341 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Bosnia and Herzegovina
-
-# Network speed Croatia
-@bot.message_handler(func=lambda message: message.text == lt_croatiaspdt)
-def command_testspeed_croatia(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 2136 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Croatia
-
-# Network speed Czech Republic
-@bot.message_handler(func=lambda message: message.text == lt_czechrpspdt)
-def command_testspeed_czech_republic(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 4162 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Czech Republic
-
-# Network speed Denmark
-@bot.message_handler(func=lambda message: message.text == lt_denmarkspdt)
-def command_testspeed_denmark(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 9062 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Denmark
 
 # Network speed France
 @bot.message_handler(func=lambda message: message.text == lt_francefspdt)
@@ -3399,74 +2494,6 @@ def command_testspeed_germany(message):
     pass
 # Network speed Germany
 
-# Network speed Hungary
-@bot.message_handler(func=lambda message: message.text == lt_hungaryspdt)
-def command_testspeed_hungary(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 1697 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Hungary
-
-# Network speed Italy
-@bot.message_handler(func=lambda message: message.text == lt_italyflspdt)
-def command_testspeed_italy(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 11842 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Italy
-
-# Network speed Liechtenstein
-@bot.message_handler(func=lambda message: message.text == lt_liechtnspdt)
-def command_testspeed_liechtenstein(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 20255 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Liechtenstein
-
-# Network speed Luxembourg
-@bot.message_handler(func=lambda message: message.text == lt_luxmbrgspdt)
-def command_testspeed_luxembourg(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 4769 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Luxembourg
-
 # Network speed Netherlands
 @bot.message_handler(func=lambda message: message.text == lt_nthlndsspdt)
 def command_testspeed_netherlands(message):
@@ -3483,108 +2510,6 @@ def command_testspeed_netherlands(message):
   else:
     pass
 # Network speed Netherlands
-
-# Network speed Poland
-@bot.message_handler(func=lambda message: message.text == lt_polandfspdt)
-def command_testspeed_poland(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 5326 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Poland
-
-# Network speed Serbia
-@bot.message_handler(func=lambda message: message.text == lt_serbiafspdt)
-def command_testspeed_serbia(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 3800 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Serbia
-
-# Network speed Slovakia
-@bot.message_handler(func=lambda message: message.text == lt_slovakispdt)
-def command_testspeed_slovakia(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 7069 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Slovakia
-
-# Network speed Slovenia
-@bot.message_handler(func=lambda message: message.text == lt_slovenispdt)
-def command_testspeed_slovenia(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 3560 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Slovenia
-
-# Network speed Spain
-@bot.message_handler(func=lambda message: message.text == lt_spainflspdt)
-def command_testspeed_spain(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 14979 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Spain
-
-# Network speed Switzerland
-@bot.message_handler(func=lambda message: message.text == lt_swtzlndspdt)
-def command_testspeed_switzerland(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.tontgpath + "/speedtest-cli --share --server 24389 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=_("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Switzerland
 
 # Network speed United Kingdom
 @bot.message_handler(func=lambda message: message.text == lt_unitedkspdt)
@@ -3632,180 +2557,6 @@ def kill(proc_pid):
     proc.kill()
   process.kill() 
 
-def StakeChange():
-  hch = 0
-  while True:
-    if hch == config.stakecheck:
-      hch = 0
-      try:
-        minstake = config.minstakes
-        hstnm = str(os.uname()[1].split('.')[0])
-        wlt = "head -1 " + config.tk + hstnm + ".addr"
-        wlt = str(subprocess.check_output(wlt, shell = True,encoding='utf-8').rstrip())
-        acctoncli = "cd " + config.ud + " && " + config.ud + "/tonos-cli account " + wlt + " | grep -i 'balance' | awk '{print $2}'"
-        acctoncli = str(subprocess.check_output(acctoncli, shell = True,encoding='utf-8'))
-        acctonclibal = str(int(acctoncli) / 1000000000)
-        stake = int(float(acctonclibal)) - 15
-        if stake > 100:
-          stakes = str(stake)
-          updatestakecmd = "crontab -l | sed 's/validator_msig.sh \([0-9]\+\)/validator_msig.sh " + stakes + "/' | crontab -"
-          updatestakecmd = str(subprocess.call(updatestakecmd, shell = True,encoding='utf-8'))
-        else:
-          pass
-      except:
-        try:
-          bot.send_message(config.tg,_("Update stake ERROR"))
-        except:
-          pass
-    else:
-      hch += 60
-    time.sleep(60) 
-
-
-# Alerts Validator node
-def AlertsNotifications():
-  td = 0
-  hch = 0
-  t,p,c = 5,2,15
-  #q = [t * p ** (i - 1) for i in range(1, c + 1)]
-  
-  alrtprdvnr = 5
-  while True:
-    if td == 5:
-      td = 0
-      
-      # Check validator node running
-      try:
-        valnodecheck = str(subprocess.check_output(["pidof", "validator-engine"], encoding='utf-8'))
-        alrtprdvnr =5
-      except subprocess.CalledProcessError as i:
-        if i.output != None:
-          if alrtprdvnr in config.repeattimealarmnode:
-            #try:
-              #bot.send_message(config.tg, text="\U0001F6A8 " + _("Validator node is not running!!! Tap restart validator, to run your node"),  parse_mode="Markdown", reply_markup=markupValidator)
-            #except:
-              #pass
-            try:
-              bot.send_message(config.tg, text="\U0001F6A8 " + _("Validator node is not running!!! Restart node in process."),  parse_mode="Markdown", reply_markup=markupValidator)
-              bot.send_chat_action(config.tg, "typing")
-              nodelogbr = str(subprocess.check_output(["du -msh " + config.tw + "/node.log | awk '{print $1}'"], shell = True,encoding='utf-8'))
-              nodelogbr = _("*Node.log size before restart :* _") + nodelogbr + "_"
-              bot.send_message(config.tg, text = nodelogbr, parse_mode="Markdown")
-              bot.send_chat_action(config.tg, "typing")
-              killvproc = "ps -eo pid,cmd | grep -i 'validator-engine' | grep -iv 'grep' | awk '{print $1}' | xargs kill -9 $1"
-              killvproc = str(subprocess.call(killvproc, shell = True,encoding='utf-8'))
-              bot.send_message(config.tg, text = _("Node stopped. RAM & node.log clean. Starting node"), reply_markup=markupValidator)
-              bot.send_chat_action(config.tg, "typing")
-              time.sleep(1)
-              if config.nodelogressave == 1:
-                tms = str(datetime.datetime.today().strftime("%b_%d_%Y-%H_%M_%S"))
-                nodelogsavelog = str(subprocess.call(["mv " + config.tw + "/node.log " + config.tw + "/node_before_" + tms + ".log"], shell = True,encoding='utf-8'))
-              else:
-                pass
-              time.sleep(2)
-              try:
-                master, slave = pty.openpty()
-                stdout = None
-                stderr = None
-                #runvproc = config.tontgpath + "/run.sh"
-                runvproc = "/bin/bash " + config.tf + "scripts/run.sh"
-                runvprocc = subprocess.Popen(runvproc, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-                stdout, stderr = runvprocc.communicate(timeout=5)
-                os.close(slave)
-                os.close(master)
-                bot.send_message(config.tg, text = stdout, reply_markup=markupValidator)
-              except Exception as i:
-                kill(runvprocc.pid)
-                os.close(slave)
-                os.close(master)
-                bot.send_message(config.tg, text = _("Start error. Try to start your node manually"), reply_markup=markupValidator)
-            except:
-              bot.send_message(config.tg, text = _("Restart error. Try to restart your node manually"), reply_markup=markupValidator)
-            alrtprdvnr +=5
-          else:
-            alrtprdvnr +=5
-    if hch == config.balchecks:
-      hch = 0
-      try:
-        minstake = config.minstakes
-        hstnm = str(os.uname()[1].split('.')[0])
-        wlt = "head -1 " + config.tk + hstnm + ".addr"
-        wlt = str(subprocess.check_output(wlt, shell = True,encoding='utf-8').rstrip())
-        acctoncli = "cd " + config.ud + " && " + config.ud + "/tonos-cli account " + wlt + " | grep -i 'balance' | awk '{print $2}'"
-        acctoncli = str(subprocess.check_output(acctoncli, shell = True,encoding='utf-8'))
-        acctonclibal = str(int(acctoncli) / 1000000000)
-        currentstake = "crontab -l | grep -oP 'validator_msig.sh ([0-9]+)' | awk '{print $2}'"
-        currentstake = str(subprocess.check_output(currentstake, shell = True,encoding='utf-8').rstrip())
-        if int(minstake) < int(float(acctonclibal)) < int(currentstake):
-          try:
-            bot.send_message(config.tg,_("Your balance is ") + acctonclibal + " \U0001F48E\n" + _("Please change your stake ") + currentstake + " \U0001F48E " + _("because it is lower than your balance "))
-          except:
-            pass
-      except:
-        try:
-          bot.send_message(config.tg,_("Can't fetch your balance"))
-        except:
-          pass
-    else:
-      hch += 5
-    time.sleep(5)
-    td += 5
-#
-
-
-
-
-def AlertsNotificationst():
-
-  td = 0
-  t,p,c = 5,2,15
-  #q = [t * p ** (i - 1) for i in range(1, c + 1)] 
-  
-  alrtprdtdf = 5
-  while True:
-    if td == 5:
-      td = 0
-      try:
-        master, slave = pty.openpty()
-        stdout = None
-        stderr = None
-        timediffcmd = "/bin/bash " + config.tf + "scripts/check_node_sync_status.sh | grep TIME_DIFF | awk '{print $4}'"
-        timediff = subprocess.Popen(timediffcmd, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-        stdout, stderr = timediff.communicate(timeout=2)
-        os.close(slave)
-        os.close(master)
-        with open(os.path.join(config.tontgpathdb, "timediff.dat"), "a") as i:
-          i.write(str(int(time.time())) + ";" + stdout.rstrip() + "\n")        
-        if int(stdout) < config.timediffalarm:
-          if alrtprdtdf in config.repeattimealarmtd:
-            try:
-              bot.send_message(config.tg, text=_("Time Diff is ") + stdout)
-            except:
-              pass
-            alrtprdtdf +=5
-          else:
-            alrtprdtdf +=5
-        if int(stdout) >= config.timediffalarm:
-          alrtprdtdf = 5
-      except Exception as i:
-        kill(timediff.pid)
-        os.close(slave)
-        os.close(master)
-        if i.output == None:
-          if alrtprdtdf in config.repeattimealarmtd:
-            try:
-              bot.send_message(config.tg, text=_("Time Diff check failed"), reply_markup=markupValidator)
-            except:
-              pass
-            alrtprdtdf +=5
-          else:
-            alrtprdtdf +=5
-    else:
-      time.sleep(5)
-      td += 5
-
-# Alerts Validator node
-
 # RAM Monitoring
 def AlertsNotificationsRam():
   td = 0
@@ -3823,7 +2574,7 @@ def AlertsNotificationsRam():
         if int(float(memload)) >= config.memloadalarm:
           if alrtprdmem in config.repeattimealarmsrv:
             try:
-              bot.send_message(config.tg, text="\U0001F6A8 " + _("High memory load!!! ") + memload + _("% I recommend you to restart your *validator* node "),  parse_mode="Markdown")
+              bot.send_message(config.tg, text="\U0001F6A8 " + _("High memory load!!! ") + memload + _("% I recommend you to restart your node "),  parse_mode="Markdown")
             except:
               pass
             alrtprdmem +=5
@@ -3871,9 +2622,7 @@ def AlertsNotificationsCPU():
       time.sleep(5)
       td += 5
 
-
-
-
+# Ping Monitoring
 def AlertsNotificationsping():
   td = 0
   alrtprdpng = 5
@@ -3905,8 +2654,7 @@ def AlertsNotificationsping():
       time.sleep(5)
       td += 5
 
-
-
+# Network Monitoring
 def monitoringnetwork():
   td = 0
   while True:
@@ -3930,6 +2678,7 @@ def monitoringnetwork():
       time.sleep(4)
       td += 5
 
+# Disk monitoring
 def monitoringdiskio():
   td = 0
   while True:
@@ -3955,133 +2704,9 @@ def monitoringdiskio():
       time.sleep(4)
       td += 5
 
-def monitoringslowlog():
-  td = 0
-  while True:
-    if td == 300:
-      td = 0
-      try:
-        df = pd.read_csv(os.path.join(config.tontgpathdb, "slowlog.dat"), sep=";", encoding="utf-8", header=None)
-        last_slow = int(df.iloc[-1:,0])
-        with open(os.path.join(config.tw, "node.log"), 'r') as fl:
-          for line in fl:
-            re_date = re.findall(r'(\d{10})(?:\.\d{9})(?:.*)',line)
-            try:
-              re_date = ("".join(re_date[0]))
-              if int(re_date) > last_slow:
-                re_slow = re.findall(r'(\d{10}\.\d{9})(?:.*)\bSLOW(?:.*)\bname:(\w+)(?:.*)\bduration:(\d+)',line)
-                if len(re_slow) == 1:
-                  re_slow = (";".join(re_slow[0]))
-                  with open(os.path.join(config.tontgpathdb, "slowlog.dat"), 'a') as sla:
-                    sla.write(str(re_slow) + '\n')
-                else:
-                  pass
-              else:
-                pass
-            except:
-              pass
-      except FileNotFoundError:
-        with open(os.path.join(config.tw, "node.log"), 'r') as fl:
-          for line in fl:
-            re_slow = re.findall(r'(\d{10}\.\d{9})(?:.*)\bSLOW(?:.*)\bname:(\w+)(?:.*)\bduration:(\d+)',line)
-            try:
-              if len(re_slow) == 1:
-                re_slow = (";".join(re_slow[0]))
-                with open(os.path.join(config.tontgpathdb, "slowlog.dat"), 'a') as sla:
-                  sla.write(str(re_slow) + '\n')
-              else:
-                  pass
-            except:
-              pass
-      except:
-        pass
-    else:
-      time.sleep(300)
-      td += 300
-
-
-def monitoringadnlkey():
-  td = 0
-  while True:
-    if td == 3600:
-      td = 0
-      try:
-        eladnlkey = "cat " + config.tk + "elections/*-election-adnl-key | grep 'new key' | awk '{print $4}'"
-        validator_key = "grep -rn " + config.tk + "elections/ -e 'validator public key' | awk '{print $NF}'"
-        eladnlkey = str(subprocess.check_output(eladnlkey, shell = True,encoding='utf-8').rstrip())  
-        validator_details = config.vu + str(subprocess.check_output(validator_key, shell = True,encoding='utf-8').rstrip())
-        if not os.path.exists(os.path.join(config.tontgpathdb, "adnlkeys.dat")):
-          os.mknod(os.path.join(config.tontgpathdb, "adnlkeys.dat"))
-        adnllstlch = os.popen("tail -n 1 " + config.tontgpathdb + "/adnlkeys.dat").read().rstrip()
-        adnlnwline = eladnlkey + ";" + validator_details
-        if str(adnllstlch) == str(adnlnwline):
-          pass
-        else:
-          with open(os.path.join(config.tontgpathdb, "adnlkeys.dat"), "a") as i:
-            i.write(eladnlkey + ";" + validator_details + "\n")
-            i.close()
-      except:
-        pass
-    else:
-      time.sleep(600)
-      td += 600
         
-def monitoringstakesend():
-  td = 0
-  while True:
-    if td == 900:
-      td = 0
-      try:
-        tnow = int(time.time())
-        master, slave = pty.openpty()
-        stdout = None
-        stderr = None
-        telectstart = liteclcmd + "'getconfig 34' | grep cur_validators | awk -F':| ' {'print $6'}"
-        telectstart = subprocess.Popen(telectstart, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-        stdout, stderr = telectstart.communicate(timeout=2)
-        os.close(slave)
-        os.close(master)
-        telectstartsend = int(stdout) + 32768 + config.stakesendcheck
-        telectend = int(stdout) + 57346
-        if telectstartsend < tnow < telectend:
-          try:
-            validatorpubkey = "cat " + config.tk + "elections/net-ton-request-dump2 | grep 'public key' | awk '{print $NF}'"
-            validatorpubkey = str(subprocess.check_output(validatorpubkey, shell = True,encoding='utf-8'))
-            validatorpubkeyint = int(validatorpubkey, 16)
-            master, slave = pty.openpty()
-            stdout = None
-            stderr = None
-            checkinpl = liteclcmd + "'runmethod -1:3333333333333333333333333333333333333333333333333333333333333333 participant_list' | grep 'result:' | grep -oP " + str(validatorpubkeyint)
-            checkinpl = subprocess.Popen(checkinpl, stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, encoding='utf-8', close_fds=True)
-            stdout, stderr = checkinpl.communicate(timeout=7)
-            os.close(slave)
-            os.close(master)
-            if stdout.rstrip() != '':
-              pass
-            else:
-              bot.send_message(config.tg, "ALARM!!! Stake not send!!!")
-          except:
-            kill(checkinpl.pid)
-            os.close(slave)
-            os.close(master)
-            bot.send_message(config.tg, "ALARM!!! Check for stake send.")
-        else:
-          pass
-      except:
-        kill(telectstart.pid)
-        os.close(slave)
-        os.close(master)
-        bot.send_message(config.tg, "ALARM!!! Except stake check")
-    else:
-      time.sleep(300)
-      td += 300
-
 if __name__ == '__main__':
 
-  if config.cfgAlertsNotifications == 1:
-    AlertsNotifications = threading.Thread(target = AlertsNotifications)
-    AlertsNotifications.start()
-  
   if config.cfgAlertsNotificationsRam == 1:
     AlertsNotificationsRam = threading.Thread(target = AlertsNotificationsRam)
     AlertsNotificationsRam.start()
@@ -4089,10 +2714,6 @@ if __name__ == '__main__':
   if config.cfgAlertsNotificationsCPU == 1:
     AlertsNotificationsCPU = threading.Thread(target = AlertsNotificationsCPU)
     AlertsNotificationsCPU.start()
-
-  if config.cfgAlertsNotificationst == 1:
-    AlertsNotificationst = threading.Thread(target = AlertsNotificationst)
-    AlertsNotificationst.start()
 
   if config.cfgmonitoringnetwork == 1:
     monitoringnetwork = threading.Thread(target = monitoringnetwork)
@@ -4105,30 +2726,9 @@ if __name__ == '__main__':
   if config.cfgmonitoringdiskio == 1:
     monitoringdiskio = threading.Thread(target = monitoringdiskio)
     monitoringdiskio.start()
-  
-  if config.cfgmonitoringslowlog == 1:
-    monitoringslowlog = threading.Thread(target = monitoringslowlog)
-    monitoringslowlog.start()
-
-  if config.cfgstakechange == 1:
-    StakeChange = threading.Thread(target = StakeChange)
-    StakeChange.start()
-
-  if config.cfgmonitoringadnlkey == 1:
-    monitoringadnlkey = threading.Thread(target = monitoringadnlkey)
-    monitoringadnlkey.start()
-  
-  if config.cfgmonitoringstakesendcheck == 1:
-    monitoringstakesend = threading.Thread(target = monitoringstakesend)
-    monitoringstakesend.start()
 
   else:
     pass
-# /Alerts monitoringadnlkey
- 
- 
-
-  
 
 while True:
   try:
