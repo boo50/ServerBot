@@ -59,10 +59,12 @@ botstatus
 
 ### What to do if something not working?
 If you get History load error, remove bot files from /tmp
+```sh
+cd /tmp
 sudo rm -rf /tmp/*.log
 sudo rm -rf /tmp/*.png
-
+```
 Find in bot.py telebot.logger.setLevel(logging.ERROR) and change ERROR to DEBUG, restart serverbot service and execute
-  ```sh
+```sh
 $ journalctl -e -u serverbot > ~/serverbot/servicelog.log
 ```
