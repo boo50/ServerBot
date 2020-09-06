@@ -48,6 +48,13 @@ cd $HOME && git clone -v https://github.com/boo50/ServerBot.git serverbot && cd 
 ./installsbot.sh
 ```
 
+### If you make any changes in config you need to restart your bot. To start, stop or check status you can use commands in bash:
+```sh
+botstart
+botstop
+botstatus
+```
+
 ### What to do if something not working?
 If you get History load error, remove bot files from /tmp
 sudo rm -rf /tmp/*.log
