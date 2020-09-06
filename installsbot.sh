@@ -13,6 +13,11 @@ pip3 install --upgrade pandas
 
 echo "Prepare configs"
 sed -i "s/<user>/"$USER"/g" serverbot.service sbot.sh config.py
+echo "alias botstop='sudo systemctl stop serverbot'" >> /home/$USER/.bash_aliases
+echo "alias botstart='sudo systemctl start serverbot'" >> /home/$USER/.bash_aliases
+echo "alias botstatus='sudo systemctl status serverbot'" >> /home/$USER/.bash_aliases
+source /home/$USER/.bash_aliases
+
 echo "Copy files"
 sudo cp -pv ./sbot.sh /etc/init.d/serverbot
 chmod -v +x /etc/init.d/serverbot
