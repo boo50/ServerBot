@@ -35,7 +35,7 @@ Tested on ubuntu 18.04 & python 3.6.9
  9. Check network load + Historical data
  10. Check server network speed to different countries (Some countries may not work because speedtest servers may have problems. On Hetzner, many countries didn't work. In the future, I will add much more servers for tests)
 
-### Installation in 5 simple steps (2-3 minutes, and your bot is ready)
+### Installation
  1. Create your personal telegram bot and get Api Token.
  2. Send to your new bot command /start and go to the next step.
  3. Run command below
@@ -43,7 +43,7 @@ Tested on ubuntu 18.04 & python 3.6.9
 cd $HOME && git clone -v https://github.com/boo50/ServerBot.git serverbot && cd ./serverbot && chmod +x ./installsbot.sh
 ```
  4. Open ./config.py and insert your bot API and your telegram id.
- 5. Run 
+ 5. Run installation script
 ```sh
 ./installsbot.sh
 ```
