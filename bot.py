@@ -2440,15 +2440,6 @@ def command_currdiskload(message):
 # /Linux tools
 #######################################################
 
-## Network speed start
-#@bot.message_handler(func=lambda message: message.text == lt_spdtst)
-#def command_speedtest(message):
-#  if message.from_user.id == config.tg:
-#    bot.send_message(config.tg, text=("Check server network speed. ") + "\U0001F4E1", reply_markup=markupspeedtest)
-#  else:
-#    pass
-## Network speed start
-
 # Network speedtest
 @bot.message_handler(func=lambda message: message.text == lt_spdtst)
 def command_testspeed(message):
@@ -2459,76 +2450,12 @@ def command_testspeed(message):
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
+      bot.send_photo(config.tg, testspeedfile)
     except:
-      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
+      bot.send_message(config.tg, text=("Network speed test check failed"))
   else:
     pass
 # Network speedtest end
-
-## Network speed Germany
-#@bot.message_handler(func=lambda message: message.text == lt_germanyspdt)
-#def command_testspeed_germany(message):
-#  if message.from_user.id == config.tg:
-#    try:
-#      bot.send_chat_action(config.tg, "typing")
-#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 28622 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-#      bot.send_chat_action(config.tg, "upload_photo")
-#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-#    except:
-#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-#  else:
-#    pass
-## Network speed Germany
-#
-## Network speed Netherlands
-#@bot.message_handler(func=lambda message: message.text == lt_nthlndsspdt)
-#def command_testspeed_netherlands(message):
-#  if message.from_user.id == config.tg:
-#    try:
-#      bot.send_chat_action(config.tg, "typing")
-#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 20005 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-#      bot.send_chat_action(config.tg, "upload_photo")
-#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-#    except:
-#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-#  else:
-#    pass
-## Network speed Netherlands
-#
-## Network speed United Kingdom
-#@bot.message_handler(func=lambda message: message.text == lt_unitedkspdt)
-#def command_testspeed_uk(message):
-#  if message.from_user.id == config.tg:
-#    try:
-#      bot.send_chat_action(config.tg, "typing")
-#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 11123 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-#      bot.send_chat_action(config.tg, "upload_photo")
-#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-#    except:
-#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-#  else:
-#    pass
-## Network speed United Kingdom
-#
-## Back to linux tools
-#@bot.message_handler(func=lambda message: message.text == lt_backlinux)
-#def command_backtolinux(message):
-#  if message.from_user.id == config.tg:
-#    bot.send_message(config.tg, text=("Be careful. Some processes need time ") + " \U000023F3", reply_markup=markuplinux)
-#  else:
-#    pass
-## /Back to linux tools
-#
-## Network speed tool
-########################################################
-
 
 # Main menu
 @bot.message_handler(func=lambda message: message.text == lt_mainmenu)
