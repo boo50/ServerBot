@@ -63,17 +63,17 @@ lt_starttime = "\U0001F7E2 " + lt_starttime
 lt_mainmenu = ("Main menu")
 lt_mainmenu =  "\U0001F3E1 " + lt_mainmenu
 #----
-lt_francefspdt =  ("France")
-lt_francefspdt =  "\U0001F1EB\U0001F1F7 " + lt_francefspdt
-lt_germanyspdt =  ("Germany")
-lt_germanyspdt =  "\U0001F1E9\U0001F1EA " + lt_germanyspdt
-lt_nthlndsspdt =  ("Netherlands")
-lt_nthlndsspdt =  "\U0001F1F3\U0001F1F1 " + lt_nthlndsspdt
-lt_unitedkspdt =  ("United Kingdom")
-lt_unitedkspdt =  "\U0001F1EC\U0001F1E7 " + lt_unitedkspdt
-lt_backlinux =  ("Back to Linux tools")
-lt_backlinux = "\U0001F519 " + lt_backlinux
-# /Menu vars
+#lt_francefspdt =  ("France")
+#lt_francefspdt =  "\U0001F1EB\U0001F1F7 " + lt_francefspdt
+#lt_germanyspdt =  ("Germany")
+#lt_germanyspdt =  "\U0001F1E9\U0001F1EA " + lt_germanyspdt
+#lt_nthlndsspdt =  ("Netherlands")
+#lt_nthlndsspdt =  "\U0001F1F3\U0001F1F1 " + lt_nthlndsspdt
+#lt_unitedkspdt =  ("United Kingdom")
+#lt_unitedkspdt =  "\U0001F1EC\U0001F1E7 " + lt_unitedkspdt
+#lt_backlinux =  ("Back to Linux tools")
+#lt_backlinux = "\U0001F519 " + lt_backlinux
+## /Menu vars
 
 # Default markup
 markup = types.ReplyKeyboardMarkup()
@@ -104,16 +104,16 @@ markuplinux.row(mainmenu)
 # /Linux markup
 
 # Speedtest markup
-markupspeedtest = types.ReplyKeyboardMarkup()
-francefspdt = types.KeyboardButton(lt_francefspdt)
-germanyspdt = types.KeyboardButton(lt_germanyspdt)
-nthlndsspdt = types.KeyboardButton(lt_nthlndsspdt)
-unitedkspdt = types.KeyboardButton(lt_unitedkspdt)
-backlinux = types.KeyboardButton(lt_backlinux)
-mainmenu = types.KeyboardButton(lt_mainmenu)
-markupspeedtest.row(francefspdt,germanyspdt,nthlndsspdt,unitedkspdt)
-markupspeedtest.row(backlinux,mainmenu)
-# /Speedtest markup
+#markupspeedtest = types.ReplyKeyboardMarkup()
+#francefspdt = types.KeyboardButton(lt_francefspdt)
+#germanyspdt = types.KeyboardButton(lt_germanyspdt)
+#nthlndsspdt = types.KeyboardButton(lt_nthlndsspdt)
+#unitedkspdt = types.KeyboardButton(lt_unitedkspdt)
+#backlinux = types.KeyboardButton(lt_backlinux)
+#mainmenu = types.KeyboardButton(lt_mainmenu)
+#markupspeedtest.row(francefspdt,germanyspdt,nthlndsspdt,unitedkspdt)
+#markupspeedtest.row(backlinux,mainmenu)
+## /Speedtest markup
 
 # Get id for tg value
 @bot.message_handler(commands=["id"])
@@ -257,8 +257,8 @@ def historyget(f,t,lbl,ptitle,poutf,rm):
     x = df.iloc[:,0].loc[period]
     y = df.iloc[:,1].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(ptitle)
     plt.yticks(np.arange(0, 100, step=5))
     plt.grid(True)
@@ -267,7 +267,7 @@ def historyget(f,t,lbl,ptitle,poutf,rm):
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -284,15 +284,15 @@ def historygettd(f,t,lbl,ptitle,poutf,rm):
     x = df.iloc[:,0].loc[period]
     y = df.iloc[:,1].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(ptitle)
     plt.grid(True)
     plt.plot(x, y)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -309,15 +309,15 @@ def historygetping(f,t,lbl,ptitle,poutf,rm):
     x = df.iloc[:,0].loc[period]
     y = df.iloc[:,1].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(ptitle)
     plt.grid(True)
     plt.plot(x, y)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -338,21 +338,21 @@ def historygetnb(f,t,lbl,dptitle,uptitle,poutf,rm):
     y2 = df.iloc[:,2].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
     plt.subplot(2, 1, 1)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(dptitle)
     plt.grid(True)
     plt.plot(x, y1)
     plt.subplot(2, 1, 2)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(uptitle)
     plt.grid(True)
     plt.plot(x, y2)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -373,21 +373,21 @@ def historygetdio(f,t,lbl,rptitle,wptitle,poutf,rm):
     y2 = df.iloc[:,2].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
     plt.subplot(2, 1, 1)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(rptitle)
     plt.grid(True)
     plt.plot(x, y1)
     plt.subplot(2, 1, 2)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(wptitle)
     plt.grid(True)
     plt.plot(x, y2)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -404,15 +404,15 @@ def historygetslowlog(f,t,lbl,ptitle,poutf,rm):
     x = df.iloc[:,0].loc[period]
     y = df.iloc[:,2].loc[period]
     plt.figure(figsize=[12, 9], dpi=100)
-    plt.xlabel('Time') 
-    plt.ylabel(lbl) 
+    plt.xlabel('Time')
+    plt.ylabel(lbl)
     plt.title(ptitle)
     plt.grid(True)
     plt.plot(x, y)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     plt.savefig(poutf)
-    plt.close() 
+    plt.close()
     load = open(poutf, 'rb')
     bot.send_photo(config.tg, load, reply_markup=rm)
   except:
@@ -456,13 +456,7 @@ def command_disk(message):
   if message.from_user.id == config.tg:
     try:
       disk = str(subprocess.check_output(["df -h -t ext4"], shell = True,encoding='utf-8'))
-      dbsize = str(subprocess.check_output(["du -msh " + config.tw + "/db/files/ | awk '{print $1}'"], shell = True,encoding='utf-8'))
-      archsize = str(subprocess.check_output(["du -msh " + config.tw + "/db/archive/ | awk '{print $1}'"], shell = True,encoding='utf-8'))
-      nodelog = str(subprocess.check_output(["du -msh " + config.tw + "/node.log | awk '{print $1}'"], shell = True,encoding='utf-8'))
-      dbsize = ("*Database size:* _") + dbsize + "_"
-      archsize = ("*Archive size:* _") + archsize + "_" 
-      nodelog = ("*Node.log size:* _") + nodelog + "_"
-      bot.send_message(config.tg, text=archsize + dbsize + nodelog + disk, parse_mode="Markdown", reply_markup=markup)
+      bot.send_message(config.tg, text=disk, parse_mode="Markdown", reply_markup=markup)
     except:
       bot.send_message(config.tg, text=("Can't get disk info"), parse_mode="Markdown", reply_markup=markup)
   else:
@@ -488,8 +482,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -498,7 +492,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_1h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -511,8 +505,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -521,7 +515,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_1h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -534,8 +528,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -544,7 +538,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_3h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -557,8 +551,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -567,7 +561,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_6h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -580,8 +574,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -590,7 +584,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_12h = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -603,8 +597,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -613,7 +607,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_1d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuloadhist)
       except:
@@ -626,8 +620,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -636,7 +630,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_3d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
@@ -649,8 +643,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -659,7 +653,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_5d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
@@ -672,8 +666,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -682,7 +676,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_7d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
@@ -695,8 +689,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -705,7 +699,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_14d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
@@ -718,8 +712,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -728,7 +722,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_21d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
       except:
@@ -741,8 +735,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Utilization') 
+        plt.xlabel('Time')
+        plt.ylabel('Utilization')
         plt.title('CPU Utilization')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -751,7 +745,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/cpuload.png')
-        plt.close() 
+        plt.close()
         cpuload_30d = open('/tmp/cpuload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=cpuload_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=cpuhistmore)
         bot.send
@@ -772,8 +766,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -782,7 +776,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_30m = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -795,8 +789,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -805,7 +799,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_1h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -818,8 +812,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -828,7 +822,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_3h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -841,8 +835,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -851,7 +845,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_6h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -864,8 +858,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -874,7 +868,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_12h = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -887,8 +881,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -897,7 +891,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_1d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramloadhist)
       except:
@@ -910,8 +904,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -920,7 +914,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_3d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
@@ -933,8 +927,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -943,7 +937,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_5d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
@@ -956,8 +950,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -966,7 +960,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_7d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
@@ -979,8 +973,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -989,7 +983,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_14d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
@@ -1002,8 +996,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -1012,7 +1006,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_21d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
       except:
@@ -1025,8 +1019,8 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Load') 
+        plt.xlabel('Time')
+        plt.ylabel('Load')
         plt.title('RAM Load')
         plt.yticks(np.arange(0, 100, step=5))
         plt.grid(True)
@@ -1035,7 +1029,7 @@ def inlinekeyboards(call):
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/ramload.png')
-        plt.close() 
+        plt.close()
         ramload_30d = open('/tmp/ramload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=ramload_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=ramhistmore)
         bot.send
@@ -1056,15 +1050,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_30m = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1077,15 +1071,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_1h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1098,15 +1092,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_3h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1119,15 +1113,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_6h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1140,15 +1134,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_12h = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1161,15 +1155,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_1d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhist)
       except:
@@ -1182,15 +1176,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_3d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
@@ -1203,15 +1197,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_5d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
@@ -1224,15 +1218,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_7d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
@@ -1245,15 +1239,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_14d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
@@ -1266,15 +1260,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_21d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
       except:
@@ -1287,15 +1281,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('Difference') 
+        plt.xlabel('Time')
+        plt.ylabel('Difference')
         plt.title('Time Diff')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/timediff.png')
-        plt.close() 
+        plt.close()
         timediff_30d = open('/tmp/timediff.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=timediff_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=timediffhistmore)
         bot.send
@@ -1316,15 +1310,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_30m = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_30m),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1337,15 +1331,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_1h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1358,15 +1352,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_3h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1379,15 +1373,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_6h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1400,15 +1394,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_12h = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1421,15 +1415,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_1d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_1d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pingcheckhist)
       except:
@@ -1442,15 +1436,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_3d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_3d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
@@ -1463,15 +1457,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_5d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_5d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
@@ -1484,15 +1478,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_7d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_7d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
@@ -1505,15 +1499,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_14d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_14d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
@@ -1526,15 +1520,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_21d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_21d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
       except:
@@ -1547,15 +1541,15 @@ def inlinekeyboards(call):
         x = df.iloc[:,0].loc[period]
         y = df.iloc[:,1].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
-        plt.xlabel('Time') 
-        plt.ylabel('ms') 
+        plt.xlabel('Time')
+        plt.ylabel('ms')
         plt.title('Ping Check')
         plt.grid(True)
         plt.plot(x, y)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/pingcheck.png')
-        plt.close() 
+        plt.close()
         pingcheck_30d = open('/tmp/pingcheck.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=pingcheck_30d),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=pinghistmore)
         bot.send
@@ -1580,21 +1574,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_1h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1611,21 +1605,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_1h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1642,21 +1636,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_3h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1673,21 +1667,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_6h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1704,21 +1698,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_12h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1735,21 +1729,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_24h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_24h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkcheckhist)
       except:
@@ -1766,21 +1760,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_72h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_72h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1797,21 +1791,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_120h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_120h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1828,21 +1822,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_168h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_168h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1859,21 +1853,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_336h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_336h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1890,21 +1884,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_504h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_504h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1921,21 +1915,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Upload speed')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('Mb/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Download speed')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/networkload.png')
-        plt.close() 
+        plt.close()
         networkload_720h = open('/tmp/networkload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=networkload_720h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=networkhistmore)
       except:
@@ -1959,21 +1953,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[12, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_1h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -1990,21 +1984,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[15, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_1h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_1h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -2021,21 +2015,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_3h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_3h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -2052,21 +2046,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_6h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_6h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -2083,21 +2077,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_12h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_12h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -2114,21 +2108,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_24h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_24h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiocheckhist)
       except:
@@ -2145,21 +2139,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[20, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_72h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_72h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2176,21 +2170,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_120h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_120h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2207,21 +2201,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_168h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_168h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2238,21 +2232,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_336h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_336h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2269,21 +2263,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_504h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_504h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2300,21 +2294,21 @@ def inlinekeyboards(call):
         y2 = df.iloc[:,2].loc[period]
         plt.figure(figsize=[30, 9], dpi=100)
         plt.subplot(2, 1, 1)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Read')
         plt.grid(True)
         plt.plot(x, y1)
         plt.subplot(2, 1, 2)
-        plt.xlabel('Time') 
-        plt.ylabel('MB/s') 
+        plt.xlabel('Time')
+        plt.ylabel('MB/s')
         plt.title('Write')
         plt.grid(True)
         plt.plot(x, y2)
         plt.gcf().autofmt_xdate()
         plt.tight_layout()
         plt.savefig('/tmp/diskioload.png')
-        plt.close() 
+        plt.close()
         diskioload_720h = open('/tmp/diskioload.png', 'rb')
         bot.edit_message_media(media=types.InputMedia(type='photo', media=diskioload_720h),chat_id=call.message.chat.id,message_id=call.message.message_id, reply_markup=diskiohistmore)
       except:
@@ -2426,11 +2420,11 @@ def command_currdiskload(message):
       bot.send_chat_action(config.tg, "typing")
       currentloadd = psutil.disk_io_counters()
       bytes_read = getattr(currentloadd, 'read_bytes')
-      bytes_writ = getattr(currentloadd, 'write_bytes') 
+      bytes_writ = getattr(currentloadd, 'write_bytes')
       time.sleep(1)
       currentloadd1 = psutil.disk_io_counters()
       bytes_read1 = getattr(currentloadd1, 'read_bytes')
-      bytes_writ1 = getattr(currentloadd1, 'write_bytes') 
+      bytes_writ1 = getattr(currentloadd1, 'write_bytes')
       readio = (bytes_read1-bytes_read)/1024/1024
       writio = (bytes_writ1-bytes_writ)/1024/1024
       readio = str((round(readio, 2)))
@@ -2446,22 +2440,22 @@ def command_currdiskload(message):
 # /Linux tools
 #######################################################
 
-# Network speed start
+## Network speed start
+#@bot.message_handler(func=lambda message: message.text == lt_spdtst)
+#def command_speedtest(message):
+#  if message.from_user.id == config.tg:
+#    bot.send_message(config.tg, text=("Check server network speed. ") + "\U0001F4E1", reply_markup=markupspeedtest)
+#  else:
+#    pass
+## Network speed start
+
+# Network speedtest
 @bot.message_handler(func=lambda message: message.text == lt_spdtst)
-def command_speedtest(message):
-  if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=("Check server network speed. ") + "\U0001F4E1", reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed start
-
-# Network speed France
-@bot.message_handler(func=lambda message: message.text == lt_francefspdt)
-def command_testspeed_france(message):
+def command_testspeed(message):
   if message.from_user.id == config.tg:
     try:
       bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 24386 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
       testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
       bot.send_chat_action(config.tg, "upload_photo")
       testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
@@ -2470,70 +2464,70 @@ def command_testspeed_france(message):
       bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
   else:
     pass
-# Network speed France
+# Network speedtest end
 
-# Network speed Germany
-@bot.message_handler(func=lambda message: message.text == lt_germanyspdt)
-def command_testspeed_germany(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 28622 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Germany
-
-# Network speed Netherlands
-@bot.message_handler(func=lambda message: message.text == lt_nthlndsspdt)
-def command_testspeed_netherlands(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 20005 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed Netherlands
-
-# Network speed United Kingdom
-@bot.message_handler(func=lambda message: message.text == lt_unitedkspdt)
-def command_testspeed_uk(message):
-  if message.from_user.id == config.tg:
-    try:
-      bot.send_chat_action(config.tg, "typing")
-      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 11123 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
-      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
-      bot.send_chat_action(config.tg, "upload_photo")
-      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
-      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
-    except:
-      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
-  else:
-    pass
-# Network speed United Kingdom
-
-# Back to linux tools
-@bot.message_handler(func=lambda message: message.text == lt_backlinux)
-def command_backtolinux(message):
-  if message.from_user.id == config.tg:
-    bot.send_message(config.tg, text=("Be careful. Some processes need time ") + " \U000023F3", reply_markup=markuplinux)
-  else:
-    pass
-# /Back to linux tools
-
-# Network speed tool
-#######################################################
+## Network speed Germany
+#@bot.message_handler(func=lambda message: message.text == lt_germanyspdt)
+#def command_testspeed_germany(message):
+#  if message.from_user.id == config.tg:
+#    try:
+#      bot.send_chat_action(config.tg, "typing")
+#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 28622 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
+#      bot.send_chat_action(config.tg, "upload_photo")
+#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
+#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
+#    except:
+#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
+#  else:
+#    pass
+## Network speed Germany
+#
+## Network speed Netherlands
+#@bot.message_handler(func=lambda message: message.text == lt_nthlndsspdt)
+#def command_testspeed_netherlands(message):
+#  if message.from_user.id == config.tg:
+#    try:
+#      bot.send_chat_action(config.tg, "typing")
+#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 20005 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
+#      bot.send_chat_action(config.tg, "upload_photo")
+#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
+#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
+#    except:
+#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
+#  else:
+#    pass
+## Network speed Netherlands
+#
+## Network speed United Kingdom
+#@bot.message_handler(func=lambda message: message.text == lt_unitedkspdt)
+#def command_testspeed_uk(message):
+#  if message.from_user.id == config.tg:
+#    try:
+#      bot.send_chat_action(config.tg, "typing")
+#      testspeedcmd = "python3 " + config.serverbotpath + "/speedtest-cli --share --server 11123 | grep -i 'Share results' | awk '{print $3}' | wget -i - -O /tmp/speedtestcheck.png"
+#      testspeed =str(subprocess.call(testspeedcmd, shell = True,encoding='utf-8'))
+#      bot.send_chat_action(config.tg, "upload_photo")
+#      testspeedfile = open('/tmp/speedtestcheck.png', 'rb')
+#      bot.send_photo(config.tg, testspeedfile, reply_markup=markupspeedtest)
+#    except:
+#      bot.send_message(config.tg, text=("Network speed test check failed"), reply_markup=markupspeedtest)
+#  else:
+#    pass
+## Network speed United Kingdom
+#
+## Back to linux tools
+#@bot.message_handler(func=lambda message: message.text == lt_backlinux)
+#def command_backtolinux(message):
+#  if message.from_user.id == config.tg:
+#    bot.send_message(config.tg, text=("Be careful. Some processes need time ") + " \U000023F3", reply_markup=markuplinux)
+#  else:
+#    pass
+## /Back to linux tools
+#
+## Network speed tool
+########################################################
 
 
 # Main menu
@@ -2550,7 +2544,35 @@ def kill(proc_pid):
   process = psutil.Process(proc_pid)
   for proc in process.children(recursive=True):
     proc.kill()
-  process.kill() 
+  process.kill()
+
+# Validator node monitoring
+def AlertsNotificationsNode():
+  td = 0
+  hch = 0
+  t,p,c = 5,2,15
+  alrtprdvnr = 5
+  while True:
+    if td == 5:
+      td = 0
+      # Check validator node running
+      try:
+        valnodecheck = str(subprocess.check_output(["pidof", "near"], encoding='utf-8'))
+        alrtprdvnr =5
+      except subprocess.CalledProcessError as i:
+        if i.output != None:
+          if alrtprdvnr in config.repeattimealarmnode:
+            try:
+              bot.send_message(config.tg, text="\U0001F6A8 " + ("Near node is not running."),  parse_mode="Markdown", reply_markup=markupValidator)
+              bot.send_chat_action(config.tg, "typing")
+              time.sleep(2)
+            except:
+              pass
+            alrtprdvnr +=5
+          else:
+            alrtprdvnr +=5
+    time.sleep(5)
+    td += 5
 
 # RAM Monitoring
 def AlertsNotificationsRam():
@@ -2569,7 +2591,7 @@ def AlertsNotificationsRam():
         if int(float(memload)) >= config.memloadalarm:
           if alrtprdmem in config.repeattimealarmsrv:
             try:
-              bot.send_message(config.tg, text="\U0001F6A8 " + ("High memory load!!! ") + memload + ("% I recommend you to restart your node "),  parse_mode="Markdown")
+              bot.send_message(config.tg, text="\U0001F6A8 " + ("High memory load!!! ") + memload,  parse_mode="Markdown")
             except:
               pass
             alrtprdmem +=5
@@ -2658,17 +2680,17 @@ def monitoringnetwork():
       try:
         currentloadn = psutil.net_io_counters()
         bytes_sent = getattr(currentloadn, 'bytes_sent')
-        bytes_recv = getattr(currentloadn, 'bytes_recv') 
+        bytes_recv = getattr(currentloadn, 'bytes_recv')
         time.sleep(1)
         currentloadn1 = psutil.net_io_counters()
         bytes_sent1 = getattr(currentloadn1, 'bytes_sent')
-        bytes_recv1 = getattr(currentloadn1, 'bytes_recv') 
+        bytes_recv1 = getattr(currentloadn1, 'bytes_recv')
         sentspd = (bytes_sent1-bytes_sent)
         recvspd = (bytes_recv1-bytes_recv)
         with open(os.path.join(config.serverbotpathdb, "networkload.dat"), "a") as i:
-          i.write(str(int(time.time())) + ";" + str(int(sentspd)) + ";" + str(int(recvspd)) + "\n") 
+          i.write(str(int(time.time())) + ";" + str(int(sentspd)) + ";" + str(int(recvspd)) + "\n")
       except:
-        pass      
+        pass
     else:
       time.sleep(4)
       td += 5
@@ -2682,25 +2704,29 @@ def monitoringdiskio():
       try:
         currentloadd = psutil.disk_io_counters()
         bytes_read = getattr(currentloadd, 'read_bytes')
-        bytes_writ = getattr(currentloadd, 'write_bytes') 
+        bytes_writ = getattr(currentloadd, 'write_bytes')
         time.sleep(1)
         currentloadd1 = psutil.disk_io_counters()
         bytes_read1 = getattr(currentloadd1, 'read_bytes')
-        bytes_writ1 = getattr(currentloadd1, 'write_bytes') 
+        bytes_writ1 = getattr(currentloadd1, 'write_bytes')
         readio = (bytes_read1-bytes_read)
         writio = (bytes_writ1-bytes_writ)
         readio = str((round(readio, 2)))
         writio = str((round(writio, 2)))
         with open(os.path.join(config.serverbotpathdb, "diskioload.dat"), "a") as i:
-          i.write(str(int(time.time())) + ";" + str(int(readio)) + ";" + str(int(writio)) + "\n") 
+          i.write(str(int(time.time())) + ";" + str(int(readio)) + ";" + str(int(writio)) + "\n")
       except:
         pass
     else:
       time.sleep(4)
       td += 5
 
-        
+
 if __name__ == '__main__':
+
+  if config.cfgAlertsNotificationsNode == 1:
+    AlertsNotificationsNode = threading.Thread(target = AlertsNotificationsNode)
+    AlertsNotificationsNode.start()
 
   if config.cfgAlertsNotificationsRam == 1:
     AlertsNotificationsRam = threading.Thread(target = AlertsNotificationsRam)
@@ -2717,7 +2743,7 @@ if __name__ == '__main__':
   if config.cfgAlertsNotificationsping == 1:
     AlertsNotificationsping = threading.Thread(target = AlertsNotificationsping)
     AlertsNotificationsping.start()
-  
+
   if config.cfgmonitoringdiskio == 1:
     monitoringdiskio = threading.Thread(target = monitoringdiskio)
     monitoringdiskio.start()

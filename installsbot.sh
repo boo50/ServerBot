@@ -23,9 +23,9 @@ chmod -v +x /etc/init.d/serverbot
 sudo cp -pv ./serverbot.service /etc/systemd/system
 chmod -v +x ./bot.py
 echo "Done"
-#echo "Download speedtest-cli"
-#wget -O ./speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-#chmod +x ./speedtest-cli
+echo "Download speedtest-cli"
+wget -O ./speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x ./speedtest-cli
 sudo systemctl daemon-reload
 echo "Start service and check status"
 echo "service serverbot start"
